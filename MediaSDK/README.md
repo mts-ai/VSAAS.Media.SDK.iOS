@@ -2,7 +2,7 @@
 
 ## Disclaimer
 This is a non-commercial version of VXG Media SDK for iOS. Playback is limited to 2 mins.
-Commercial use and access to extra features requires a license. Please learn more at https://www.videoexpertsgroup.com/player-sdk/
+Commercial use and access to extra features requires a license.
 
 ## About SDK
 SDK consists of two modules:
@@ -14,7 +14,7 @@ Encoding module can be used for any kind of mobile video broadcasting: home surv
 Source code of samples can be provided.
 
 ## Documentation 
-The full SDK documentation can be found here - https://github.com/VideoExpertsGroup/VXG.Media.SDK.iOS/tree/master/Documentation. 
+The full SDK documentation can be found here - https://github.com/mts-ai/VSAAS.Media.SDK.iOS/tree/master/Documentation. 
 
 ## Player SDK
    Main features:
@@ -56,6 +56,3 @@ The full SDK documentation can be found here - https://github.com/VideoExpertsGr
    * RTSP tunneling over HTTPS, HTTP
    * Capturing raw video up to 30 FPS
    * Capturing raw audio (PCM format)
-   
-## Demo screenshots
-<img src="http://www.videoexpertsgroup.com/git/iphone_rtsp.png" alt="RTSP Player sample" width="400">

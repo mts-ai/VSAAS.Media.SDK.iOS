@@ -3,24 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50501200274BF24700C4AF52 /* libcloudsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FC274BF24700C4AF52 /* libcloudsdk.a */; };
-		50501201274BF24700C4AF52 /* cloudsdktimelineview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FD274BF24700C4AF52 /* cloudsdktimelineview.framework */; };
-		50501202274BF24700C4AF52 /* cloudsdkplayerview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FE274BF24700C4AF52 /* cloudsdkplayerview.framework */; };
-		50501203274BF24700C4AF52 /* cloudsdkcalendarview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FF274BF24700C4AF52 /* cloudsdkcalendarview.framework */; };
-		50501207274BF26500C4AF52 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50501204274BF26500C4AF52 /* openssl.framework */; };
-		50501208274BF26500C4AF52 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50501205274BF26500C4AF52 /* SDWebImage.framework */; };
-		50501209274BF26500C4AF52 /* ffmpeg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50501206274BF26500C4AF52 /* ffmpeg.framework */; };
-		5050120A274BF27100C4AF52 /* ffmpeg.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50501206274BF26500C4AF52 /* ffmpeg.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5050120B274BF27100C4AF52 /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50501204274BF26500C4AF52 /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5050120C274BF27100C4AF52 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50501205274BF26500C4AF52 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5050120D274BF27100C4AF52 /* cloudsdkcalendarview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FF274BF24700C4AF52 /* cloudsdkcalendarview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5050120E274BF27100C4AF52 /* cloudsdkplayerview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FE274BF24700C4AF52 /* cloudsdkplayerview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5050120F274BF27100C4AF52 /* cloudsdktimelineview.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 505011FD274BF24700C4AF52 /* cloudsdktimelineview.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		50501211274BF57B00C4AF52 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 50501210274BF57B00C4AF52 /* libc++.tbd */; };
+		5088FAC7288DEDE100D2418E /* cloudsdkcalendarview.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC3288DEDE100D2418E /* cloudsdkcalendarview.xcframework */; };
+		5088FAC8288DEDE100D2418E /* cloudsdkcalendarview.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC3288DEDE100D2418E /* cloudsdkcalendarview.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FAC9288DEDE100D2418E /* cloudsdkplayerview.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC4288DEDE100D2418E /* cloudsdkplayerview.xcframework */; };
+		5088FACA288DEDE100D2418E /* cloudsdkplayerview.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC4288DEDE100D2418E /* cloudsdkplayerview.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FACB288DEDE100D2418E /* cloudsdktimelineview.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC5288DEDE100D2418E /* cloudsdktimelineview.xcframework */; };
+		5088FACC288DEDE100D2418E /* cloudsdktimelineview.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC5288DEDE100D2418E /* cloudsdktimelineview.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FACD288DEDE100D2418E /* cloudsdk.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC6288DEDE100D2418E /* cloudsdk.xcframework */; };
+		5088FACE288DEDE100D2418E /* cloudsdk.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAC6288DEDE100D2418E /* cloudsdk.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FAD2288DEDFE00D2418E /* ffmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FACF288DEDFE00D2418E /* ffmpeg.xcframework */; };
+		5088FAD3288DEDFE00D2418E /* ffmpeg.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FACF288DEDFE00D2418E /* ffmpeg.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FAD4288DEDFE00D2418E /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD0288DEDFE00D2418E /* openssl.xcframework */; };
+		5088FAD5288DEDFE00D2418E /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD0288DEDFE00D2418E /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FAD6288DEDFE00D2418E /* SDWebImage.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD1288DEDFE00D2418E /* SDWebImage.xcframework */; };
+		5088FAD7288DEDFE00D2418E /* SDWebImage.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD1288DEDFE00D2418E /* SDWebImage.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FADA288DF0E100D2418E /* MediaCaptureSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD8288DF0E100D2418E /* MediaCaptureSDK.xcframework */; };
+		5088FADB288DF0E100D2418E /* MediaCaptureSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD8288DF0E100D2418E /* MediaCaptureSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5088FADC288DF0E100D2418E /* MediaPlayerSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD9288DF0E100D2418E /* MediaPlayerSDK.xcframework */; };
+		5088FADD288DF0E100D2418E /* MediaPlayerSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5088FAD9288DF0E100D2418E /* MediaPlayerSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE23C9102018578C007A1684 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23C90F2018578C007A1684 /* AppDelegate.m */; };
 		CE23C9132018578C007A1684 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE23C9122018578C007A1684 /* ViewController.m */; };
 		CE23C9162018578C007A1684 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE23C9142018578C007A1684 /* Main.storyboard */; };
@@ -36,12 +41,15 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5050120A274BF27100C4AF52 /* ffmpeg.framework in Embed Frameworks */,
-				5050120B274BF27100C4AF52 /* openssl.framework in Embed Frameworks */,
-				5050120C274BF27100C4AF52 /* SDWebImage.framework in Embed Frameworks */,
-				5050120D274BF27100C4AF52 /* cloudsdkcalendarview.framework in Embed Frameworks */,
-				5050120E274BF27100C4AF52 /* cloudsdkplayerview.framework in Embed Frameworks */,
-				5050120F274BF27100C4AF52 /* cloudsdktimelineview.framework in Embed Frameworks */,
+				5088FADB288DF0E100D2418E /* MediaCaptureSDK.xcframework in Embed Frameworks */,
+				5088FAD3288DEDFE00D2418E /* ffmpeg.xcframework in Embed Frameworks */,
+				5088FACE288DEDE100D2418E /* cloudsdk.xcframework in Embed Frameworks */,
+				5088FAD5288DEDFE00D2418E /* openssl.xcframework in Embed Frameworks */,
+				5088FADD288DF0E100D2418E /* MediaPlayerSDK.xcframework in Embed Frameworks */,
+				5088FACA288DEDE100D2418E /* cloudsdkplayerview.xcframework in Embed Frameworks */,
+				5088FAC8288DEDE100D2418E /* cloudsdkcalendarview.xcframework in Embed Frameworks */,
+				5088FACC288DEDE100D2418E /* cloudsdktimelineview.xcframework in Embed Frameworks */,
+				5088FAD7288DEDFE00D2418E /* SDWebImage.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,14 +57,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		505011FC274BF24700C4AF52 /* libcloudsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcloudsdk.a; path = ../../dependencies/libraries/libcloudsdk.a; sourceTree = "<group>"; };
-		505011FD274BF24700C4AF52 /* cloudsdktimelineview.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cloudsdktimelineview.framework; path = ../../dependencies/frameworks/universal/cloudsdktimelineview.framework; sourceTree = "<group>"; };
-		505011FE274BF24700C4AF52 /* cloudsdkplayerview.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cloudsdkplayerview.framework; path = ../../dependencies/frameworks/universal/cloudsdkplayerview.framework; sourceTree = "<group>"; };
-		505011FF274BF24700C4AF52 /* cloudsdkcalendarview.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cloudsdkcalendarview.framework; path = ../../dependencies/frameworks/universal/cloudsdkcalendarview.framework; sourceTree = "<group>"; };
-		50501204274BF26500C4AF52 /* openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openssl.framework; path = ../../../Dependencies/frameworks/universal/openssl.framework; sourceTree = "<group>"; };
-		50501205274BF26500C4AF52 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = ../../../Dependencies/frameworks/universal/SDWebImage.framework; sourceTree = "<group>"; };
-		50501206274BF26500C4AF52 /* ffmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ffmpeg.framework; path = ../../../Dependencies/frameworks/universal/ffmpeg.framework; sourceTree = "<group>"; };
 		50501210274BF57B00C4AF52 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5088FAC3288DEDE100D2418E /* cloudsdkcalendarview.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cloudsdkcalendarview.xcframework; path = ../../dependencies/xcframeworks/cloudsdkcalendarview.xcframework; sourceTree = "<group>"; };
+		5088FAC4288DEDE100D2418E /* cloudsdkplayerview.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cloudsdkplayerview.xcframework; path = ../../dependencies/xcframeworks/cloudsdkplayerview.xcframework; sourceTree = "<group>"; };
+		5088FAC5288DEDE100D2418E /* cloudsdktimelineview.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cloudsdktimelineview.xcframework; path = ../../dependencies/xcframeworks/cloudsdktimelineview.xcframework; sourceTree = "<group>"; };
+		5088FAC6288DEDE100D2418E /* cloudsdk.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = cloudsdk.xcframework; path = ../../dependencies/xcframeworks/cloudsdk.xcframework; sourceTree = "<group>"; };
+		5088FACF288DEDFE00D2418E /* ffmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ffmpeg.xcframework; path = ../../../Dependencies/xcframeworks/ffmpeg.xcframework; sourceTree = "<group>"; };
+		5088FAD0288DEDFE00D2418E /* openssl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openssl.xcframework; path = ../../../Dependencies/xcframeworks/openssl.xcframework; sourceTree = "<group>"; };
+		5088FAD1288DEDFE00D2418E /* SDWebImage.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = SDWebImage.xcframework; path = ../../../Dependencies/xcframeworks/SDWebImage.xcframework; sourceTree = "<group>"; };
+		5088FAD8288DF0E100D2418E /* MediaCaptureSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MediaCaptureSDK.xcframework; path = ../../../MediaSDK/EncoderSDK/dependencies/xcframeworks/MediaCaptureSDK.xcframework; sourceTree = "<group>"; };
+		5088FAD9288DF0E100D2418E /* MediaPlayerSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MediaPlayerSDK.xcframework; path = ../../../MediaSDK/PlayerSDK/dependencies/xcframeworks/MediaPlayerSDK.xcframework; sourceTree = "<group>"; };
 		CE23C90B2018578B007A1684 /* streamland.player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = streamland.player.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE23C90E2018578C007A1684 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE23C90F2018578C007A1684 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -74,14 +84,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5088FAD4288DEDFE00D2418E /* openssl.xcframework in Frameworks */,
+				5088FAD2288DEDFE00D2418E /* ffmpeg.xcframework in Frameworks */,
+				5088FACB288DEDE100D2418E /* cloudsdktimelineview.xcframework in Frameworks */,
+				5088FAC7288DEDE100D2418E /* cloudsdkcalendarview.xcframework in Frameworks */,
+				5088FAC9288DEDE100D2418E /* cloudsdkplayerview.xcframework in Frameworks */,
+				5088FAD6288DEDFE00D2418E /* SDWebImage.xcframework in Frameworks */,
+				5088FADC288DF0E100D2418E /* MediaPlayerSDK.xcframework in Frameworks */,
 				50501211274BF57B00C4AF52 /* libc++.tbd in Frameworks */,
-				50501207274BF26500C4AF52 /* openssl.framework in Frameworks */,
-				50501208274BF26500C4AF52 /* SDWebImage.framework in Frameworks */,
-				50501209274BF26500C4AF52 /* ffmpeg.framework in Frameworks */,
-				50501200274BF24700C4AF52 /* libcloudsdk.a in Frameworks */,
-				50501201274BF24700C4AF52 /* cloudsdktimelineview.framework in Frameworks */,
-				50501202274BF24700C4AF52 /* cloudsdkplayerview.framework in Frameworks */,
-				50501203274BF24700C4AF52 /* cloudsdkcalendarview.framework in Frameworks */,
+				5088FACD288DEDE100D2418E /* cloudsdk.xcframework in Frameworks */,
+				5088FADA288DF0E100D2418E /* MediaCaptureSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,14 +136,16 @@
 		CE23C924201857C5007A1684 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5088FAD8288DF0E100D2418E /* MediaCaptureSDK.xcframework */,
+				5088FAD9288DF0E100D2418E /* MediaPlayerSDK.xcframework */,
+				5088FACF288DEDFE00D2418E /* ffmpeg.xcframework */,
+				5088FAD0288DEDFE00D2418E /* openssl.xcframework */,
+				5088FAD1288DEDFE00D2418E /* SDWebImage.xcframework */,
+				5088FAC6288DEDE100D2418E /* cloudsdk.xcframework */,
+				5088FAC3288DEDE100D2418E /* cloudsdkcalendarview.xcframework */,
+				5088FAC4288DEDE100D2418E /* cloudsdkplayerview.xcframework */,
+				5088FAC5288DEDE100D2418E /* cloudsdktimelineview.xcframework */,
 				50501210274BF57B00C4AF52 /* libc++.tbd */,
-				50501206274BF26500C4AF52 /* ffmpeg.framework */,
-				50501204274BF26500C4AF52 /* openssl.framework */,
-				50501205274BF26500C4AF52 /* SDWebImage.framework */,
-				505011FF274BF24700C4AF52 /* cloudsdkcalendarview.framework */,
-				505011FE274BF24700C4AF52 /* cloudsdkplayerview.framework */,
-				505011FD274BF24700C4AF52 /* cloudsdktimelineview.framework */,
-				505011FC274BF24700C4AF52 /* libcloudsdk.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -350,11 +364,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal",
 					"$(PROJECT_DIR)/../../dependencies/frameworks/universal",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks",
+					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../dependencies/libraries/include",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e_armv7_armv7s/cloudsdk.framework/Headers",
+				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries";
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vxg.streamland-player";
@@ -374,11 +396,19 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal",
 					"$(PROJECT_DIR)/../../dependencies/frameworks/universal",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks",
+					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks",
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries/include";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../dependencies/libraries/include",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e_armv7_armv7s/cloudsdk.framework/Headers",
+				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries";
 				OTHER_CODE_SIGN_FLAGS = "--generate-entitlement-der";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vxg.streamland-player";

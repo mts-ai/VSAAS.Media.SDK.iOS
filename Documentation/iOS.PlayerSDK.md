@@ -64,15 +64,6 @@ The SDK also uses modules from a common folder for the all SDKs with next struct
 
 This is **not required for evaluation and testing**. It’s required only after purchasing a license in order to remove evaluation version limitations.
 
-**Step 1:** Copy the Mobile license key from the License & Plans page
-
-![Screenshot](https://user-images.githubusercontent.com/11888021/156012766-f219d3ca-1c0c-4ddb-bc4c-88c606b88ad2.png)
-
-
-**Step 2:** Create an empty file **license** in your application and paste your license key into this file. See the picture below how it should look in corresponded test applications **streamland_player**.
-
-![Screenshot](https://user-images.githubusercontent.com/11888021/156012814-a355c7fb-83ff-45c9-9305-2722dc01f263.png)
-
 ## Integration with an application
 #### Integration dynamically (without modifying resources)
 

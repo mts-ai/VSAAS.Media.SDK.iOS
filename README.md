@@ -4,7 +4,7 @@
 
 ## Disclaimer
 This is a non-commercial version of VXG Media SDK for iOS.  Playback is limited to 2 minutes.
-Commercial use and access to extra features requires a license.  Learn more about <a href="https://www.videoexpertsgroup.com">VXG iOS RTSP SDK</a>
+Commercial use and access to extra features requires a license.  Learn more about VXG iOS RTSP SDK
 
 ## About SDK
 SDK consists of three modules:
@@ -65,7 +65,5 @@ Source code of samples can be provided.
    * Capturing raw video up to 30 FPS
    * Capturing raw audio (PCM format)
 
-Learn more about <a href="www.videoexpertsgroup.com">Cloud Video Surveillance</a>
+Learn more about Cloud Video Surveillance
    
-## Demo screenshots
-<img src="http://www.videoexpertsgroup.com/git/iphone_rtsp.png" alt="RTSP Player sample" width="400">

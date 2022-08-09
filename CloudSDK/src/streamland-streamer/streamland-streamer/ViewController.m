@@ -37,6 +37,10 @@
     
     access_tioken_tf.delegate = self;
     
+    // fill field with desired token value
+    access_tioken_tf.text = @"";
+    access_tioken_tf.placeholder = @"type token value here";
+
     strm = [[CloudStreamerSDK alloc] initWithParams: self];
     
     isStarted = NO;

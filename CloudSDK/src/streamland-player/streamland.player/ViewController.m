@@ -42,6 +42,10 @@
     
     access_token_tf.delegate = self;
     
+    // fill field with desired token value
+    access_token_tf.text = @"";
+    access_token_tf.placeholder = @"type token value here";
+    
     conf = [[CPlayerConfig alloc] init];
     [conf setConnectionDetectionTime:1000];
     [conf setConnectionBufferingTime:500];

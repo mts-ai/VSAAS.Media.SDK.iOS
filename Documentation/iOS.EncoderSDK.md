@@ -55,19 +55,9 @@ The SDK also uses modules from a common folder for the all SDKs with next struct
     - ffmpeg.xcframework 
     - openssl.xcframework 
 
-## Block diagram
-
-![Screenshot](https://user-images.githubusercontent.com/11888021/156013116-30cafc93-22b8-442d-a5e2-7552da935d87.png)
-
-
 ## How to apply license key
 
 This is **not required for evaluation and testing**. It is required only after purchasing a license in order to remove the evaluation version's limitations.
-
-For the **streamland_streamer** please use the following function:
-
-	MediaCaptureConfig *conf = [[MediaCaptureConfig alloc] init];
-	[conf setLicenseKey:@"LG6KeXaJ2SeoMT3eX8F5KVw8m3jxQLy6qsHPCkhhKdxWGJPty2LgdmQcM3FURTE69t3RvwkLa6j8fTtc8jZmmw"];
 
 ## Integration with an application
 #### Integration dynamically (without modifying resources)

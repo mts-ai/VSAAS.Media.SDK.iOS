@@ -1,5 +1,70 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.92.220707
+
+ CloudSDK
+Version 2.0.92_20220707:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20220707,
+  EncoderSDK: 2.0.20220707
+
+ PlayerSDK
+Version 2.0.20220707:
+- switched to openssl version 1.1.1q
+- bump version to 2.0.20220707
+
+ EncoderSDK
+Version 2.0.20220707:
+- switched to openssl version 1.1.1q
+- bump version to 2.0.20220707
+
+### MobileSDK 2.0.91.220705
+
+ CloudSDK
+Version 2.0.91_20220705:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20220705,
+  EncoderSDK: 2.0.20220705
+
+ PlayerSDK
+Version 2.0.20220705:
+- migrated openssl to version 1.1.1p
+- migrated to FFMPEG version 4.4.2
+
+ EncoderSDK
+Version 2.0.20220705:
+- migrated openssl to version 1.1.1p
+- migrated to FFMPEG version 4.4.2
+
+### MobileSDK 2.0.90.220627
+
+ CloudSDK
+Version 2.0.90_20220627:
+- fixed possible issues with uninterruptible CloudAPI synchronous commands
+
+ PlayerSDK
+Version 2.0.20220621:
+
+ EncoderSDK
+Version 2.0.20220317:
+
+### MobileSDK 2.0.89.220621
+
+ CloudSDK
+Version 2.0.89_20220621:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20220621
+- added new setting for configure internal player gestures support
+
+ PlayerSDK
+Version 2.0.20220621:
+- added support double tap gesture for all aspect ratio zoom/move modes
+- added advanced config for double tap sequence behavour
+- fixed video flickering issue with vertical pan gesture
+
+ EncoderSDK
+Version 2.0.20220317:
+
 ### MobileSDK 2.0.88.220317
 
  CloudSDK
