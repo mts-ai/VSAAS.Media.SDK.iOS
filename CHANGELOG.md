@@ -1,5 +1,17 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.93.220812
+
+ CloudSDK
+Version 2.0.93_20220812:
+- added support for get/set position when playing url (local playback)
+
+ PlayerSDK
+Version 2.0.20220707:
+
+ EncoderSDK
+Version 2.0.20220707:
+
 ### MobileSDK 2.0.92.220707
 
  CloudSDK
