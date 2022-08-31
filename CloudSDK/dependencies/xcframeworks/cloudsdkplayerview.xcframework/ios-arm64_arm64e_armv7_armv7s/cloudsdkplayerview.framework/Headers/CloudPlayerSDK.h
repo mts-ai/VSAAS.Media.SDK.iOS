@@ -188,6 +188,27 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setWorkaroundWaitWhileRecordsUploaded: (int) valueInMs;
 -(int) getWorkaroundWaitWhileRecordsUploaded;
 
+-(void) setAdvancedOptionProbeSize: (int) size;
+-(int) getAdvancedOptionProbeSize;
+
+-(void) setAdvancedOptionFpsProbeSize: (int) size;
+-(int) getAdvancedOptionFpsProbeSize;
+
+-(void) setAdvancedOptionFormatProbeSize: (int) size;
+-(int) getAdvancedOptionFormatProbeSize;
+
+-(void) setAdvancedOptionMaxProbePackets: (int) packets;
+-(int) getAdvancedOptionMaxProbePackets;
+
+-(void) setAdvancedOptionHlsLiveStartIndex: (int) index;
+-(int) getAdvancedOptionHlsLiveStartIndex;
+
+-(void) setAdvancedOptionRtmpBuffer: (int) size;
+-(int) getAdvancedOptionRtmpBuffer;
+
+-(void) setAdvancedOptionRtmpLive: (NSString*) value;
+-(NSString*) getAdvancedOptionRtmpLive;
+
 -(void) setAdvancedOptionReconnectOnHttpError: (NSString*) codes;
 -(NSString*) getAdvancedOptionReconnectOnHttpError;
 

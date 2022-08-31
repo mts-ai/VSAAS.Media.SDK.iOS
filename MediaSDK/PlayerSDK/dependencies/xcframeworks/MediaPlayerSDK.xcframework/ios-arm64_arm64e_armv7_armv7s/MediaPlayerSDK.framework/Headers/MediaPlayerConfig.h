@@ -184,6 +184,14 @@
 @property (nonatomic) int       advancedSourceUseAsyncGetAddrInfo;            // 0 - off, 1 - on, default 1
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMin; // min frame count in queue after decoder
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMax; // max frame count in queue after decoder
+
+@property (nonatomic) int       advancedSourceOptionProbeSize;                // probesize option, for min start delay: 500000 bytes
+@property (nonatomic) int       advancedSourceOptionFpsProbeSize;             // fpsprobesize option, for min start delay: 1 frame
+@property (nonatomic) int       advancedSourceOptionFormatProbeSize;          // formatprobesize option, for min start delay: 2048 bytes
+@property (nonatomic) int       advancedSourceOptionMaxProbePackets;          // max_probe_packets option, for min start delay: 256 packets
+@property (nonatomic) int       advancedSourceOptionHlsLiveStartIndex;        // hls live_start_index option, for min latency: -1
+@property (nonatomic) int       advancedSourceOptionRtmpBuffer;               // rtmp_buffer option, for min latency: 500 ms
+@property (nonatomic) NSString* advancedSourceOptionRtmpLive;                 // rtmp_live option, possible values: "any", "live", "recorded"
 @property (nonatomic) NSString* advancedSourceOptionHttpReconnectOnHttpError; // reconnect on error from string with codes separated by ",". For example: "404,405"
 
 // iOS specific

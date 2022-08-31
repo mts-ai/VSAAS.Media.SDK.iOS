@@ -1,5 +1,24 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.94.220831
+
+ CloudSDK
+Version 2.0.94_20220831:
+- added support for PlayerSDK new advanced config settings
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20220831,
+  EncoderSDK: 2.0.20220831
+
+ PlayerSDK
+Version 2.0.20220831:
+- added new advanced config settings:
+  probesize, fpsprobesize, formatprobesize, max_probe_packets, live_start_index, rtmp_buffer, rtmp_live
+- updated license list
+
+ EncoderSDK
+Version 2.0.20220831:
+- updated license list
+
 ### MobileSDK 2.0.93.220812
 
  CloudSDK
