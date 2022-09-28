@@ -1,5 +1,18 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.95.220928
+
+ CloudSDK
+Version 2.0.95_20220928:
+- fixed issues with CloudAPI commands related to 
+  12 hour time format
+
+ PlayerSDK
+Version 2.0.20220831:
+
+ EncoderSDK
+Version 2.0.20220831:
+
 ### MobileSDK 2.0.94.220831
 
  CloudSDK
