@@ -1,5 +1,21 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.96.221005
+
+ CloudSDK
+Version 2.0.96_20221005:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20221005,
+  EncoderSDK: 2.0.20221005
+
+ PlayerSDK
+Version 2.0.20221005:
+- updated license list
+
+ EncoderSDK
+Version 2.0.20221005:
+- updated license list
+
 ### MobileSDK 2.0.95.220928
 
  CloudSDK
