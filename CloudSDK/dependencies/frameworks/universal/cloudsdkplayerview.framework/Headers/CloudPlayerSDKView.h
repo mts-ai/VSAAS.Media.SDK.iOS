@@ -9,8 +9,7 @@
 #import "CloudPlayerSDK.h"
 #import <AVFoundation/AVFoundation.h>
 
-typedef NS_ENUM(int, CloudPlayerSDKViewErrors)
-{
+typedef NS_ENUM(int, CloudPlayerSDKViewErrors) {
     CLOUDPLAYERVIEW_ERROR_EOS = -1,
     CLOUDPLAYERVIEW_ERROR_STREAM_UNREACHABLE = -2,
     CLOUDPLAYERVIEW_ERROR_STREAM_COULDNOTPLAY = -3,
@@ -22,14 +21,12 @@ typedef NS_ENUM(int, CloudPlayerSDKViewErrors)
     CLOUDPLAYERVIEW_STATUS_WAITING_UPLOAD_RECORDS = -104
 };
 
-typedef NS_ENUM(int, CloudPlayerSDKViewStyles)
-{
+typedef NS_ENUM(int, CloudPlayerSDKViewStyles) {
     CLOUDPLAYERVIEW_STYLE_DEFAULT = 0,
     CLOUDPLAYERVIEW_STYLE_1,
 };
 
-typedef NS_OPTIONS(NSInteger, CloudPlayerSDKViewControls)
-{
+typedef NS_OPTIONS(NSInteger, CloudPlayerSDKViewControls) {
     CLOUDPLAYERVIEW_CONTROL_STARTTIME                    = 1 << 0,
     CLOUDPLAYERVIEW_CONTROL_STOPTIME                     = 1 << 1,
     CLOUDPLAYERVIEW_CONTROL_FULLSCREEN_TOGGLER           = 1 << 2,
@@ -60,13 +57,12 @@ typedef NS_OPTIONS(NSInteger, CloudPlayerSDKViewControls)
     CLOUDPLAYERVIEW_CONTROL_PTZ                          = 1 << 27
 };
 
-typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
-{
+typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
     CLOUDPLAYERVIEW_MODE_AUTOPLAY = 1 << 0,
 };
 
 // config for sdk view
-@interface CloudPlayerSDKViewConfig : NSObject
+@interface CloudPlayerSDKViewConfig: NSObject
 
 // style
 + (void)setStyle:(CloudPlayerSDKViewStyles)newValue;
@@ -114,21 +110,21 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
 -(int) OnConnected;
 -(int) OnVideoFirstFrame;
 -(int) OnRecordStarted;
--(int) OnRecordStopped:(NSString*)path;
--(int) OnRecordClosed:(int)errcode;
+-(int) OnRecordStopped:(NSString*) path;
+-(int) OnRecordClosed:(int) errcode;
 -(int) OnPlayed;
 -(int) OnPaused;
 -(int) OnError:(int) errcode;
 -(int) OnTrial;
 
--(int) OnPlayingPositionChanged:(long long)position
-                   withDuration:(long long)duration
-                 withRangeStart:(long long)rangeStart
-                   withRangeEnd:(long long)rangeEnd;
+-(int) OnPlayingPositionChanged:(long long) position
+                   withDuration:(long long) duration
+                 withRangeStart:(long long) rangeStart
+                   withRangeEnd:(long long) rangeEnd;
 
 @optional
--(int) OnControlsToggled:(Boolean)show;
--(int) OnFullscreenToggled:(Boolean)on;
+-(int) OnControlsToggled:(Boolean) show;
+-(int) OnFullscreenToggled:(Boolean) on;
 -(int) OnLivePressed;
 
 -(int) OnClosePressed;
@@ -139,12 +135,12 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
 -(int) OnPlayerViewTapped;
 
 @optional
-- (int) OnAudioMicrophoneFrameAvailable: (nonnull CMSampleBufferRef)frame
-                          averageLevels: (nullable float*)avrLevels
-                      averageLevelsSize: (size_t)avrLevelsSize;
+- (int) OnAudioMicrophoneFrameAvailable:(nonnull CMSampleBufferRef) frame
+                          averageLevels:(nullable float*) avrLevels
+                      averageLevelsSize:(size_t) avrLevelsSize;
 
 @optional
--(int) onSharedTokenWillExpireIn:(long long)deltaTimeInMs;
+-(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 
 @end
 
@@ -157,7 +153,8 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
 +(instancetype)new NS_UNAVAILABLE;
 -(instancetype)init NS_UNAVAILABLE;
 
--(instancetype)initWithFrame:(CGRect)frame andDelegate:(id<CloudPlayerSDKViewDelegate>)delegate;
+-(instancetype)initWithFrame:(CGRect) frame
+                 andDelegate:(id<CloudPlayerSDKViewDelegate>) delegate;
 
 // post load after nib loaded
 -(int) postLoad;
@@ -167,22 +164,25 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
 -(void) applyConfig;
 
 // for events
--(void) setDelegate:(id<CloudPlayerSDKViewDelegate>)delegate;
+-(void) setDelegate:(id<CloudPlayerSDKViewDelegate>) delegate;
 -(id<CloudPlayerSDKViewDelegate>) getDelegate;
 
 // source provider
--(int) setSource:(NSString*)source;
--(int) setSource:(NSString*)source withPosition:(long long)position;
+-(int) setSource:(NSString*) source;
+-(int) setSource:(NSString*) source
+    withPosition:(long long) position;
 -(void) close;
 
 -(void) play;
 -(void) pause;
 
--(void) setPosition:(long long)position;
+-(void) setPosition:(long long )position;
 -(long long) getPosition;
 
--(void) toggleControls:(Boolean)show withNotify:(Boolean)send;
--(void) toggleFullscreen:(Boolean)on withNotify:(Boolean)send;
+-(void) toggleControls:(Boolean) show
+            withNotify:(Boolean) send;
+-(void) toggleFullscreen:(Boolean) on
+              withNotify:(Boolean) send;
 
 -(void) setControlBackgroundColor:(UIColor*) color;
 -(void) setPlaybackControlBackgroundColor:(UIColor*) color;
@@ -192,18 +192,18 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes)
 // for advanced users
 -(CloudPlayerSDK*) getPlayer;
 
--(void) showPlayerConnecting:(Boolean)show
-              withStatusText:(NSString*)status
-                   withError:(int)error
-      andKeepControlsVisible:(Boolean)keepControls;
+-(void) showPlayerConnecting:(Boolean) show
+              withStatusText:(NSString*) status
+                   withError:(int) error
+      andKeepControlsVisible:(Boolean) keepControls;
 
--(void) setTimelineContainerHeight:(NSNumber*)height;
--(void) setTimelineContainerPaddingsWithLeading:(NSNumber*)leading
-                                        withTop:(NSNumber*)top
-                                   withTrailing:(NSNumber*)trailing
-                                     withBottom:(NSNumber*)bottom;
+-(void) setTimelineContainerHeight:(NSNumber*) height;
+-(void) setTimelineContainerPaddingsWithLeading:(NSNumber*) leading
+                                        withTop:(NSNumber*) top
+                                   withTrailing:(NSNumber*) trailing
+                                     withBottom:(NSNumber*) bottom;
 
--(void) setPlaybackContainerHeight:(NSNumber*)height;
+-(void) setPlaybackContainerHeight:(NSNumber*) height;
 
 
 -(void) setProxyDelegate: (id<CloudProxyNetworkRequests>) proxyRequests;

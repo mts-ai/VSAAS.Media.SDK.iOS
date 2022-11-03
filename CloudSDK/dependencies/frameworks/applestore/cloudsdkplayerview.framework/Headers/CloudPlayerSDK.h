@@ -16,50 +16,47 @@
 @end
 
 typedef NS_ENUM(int, CloudPlayerEvent) {
-    TRIAL_VERSION   = -999,
-    CONNECTING      = 0,
-    CONNECTED       = 1,
-    STARTED         = 2,
-    PAUSED          = 3,
-    CLOSED          = 6,
-    EOS             = 12,
-    OUT_OF_RANGE    = 13,
-    SEEK_COMPLETED  = 17,
-    SEEK_FAILED     = 18,
-    SEEK_STARTED    = 19,
-    ERROR           = 105,
+    TRIAL_VERSION = -999,
+    CONNECTING = 0,
+    CONNECTED = 1,
+    STARTED = 2,
+    PAUSED = 3,
+    CLOSED = 6,
+    EOS = 12,
+    OUT_OF_RANGE = 13,
+    SEEK_COMPLETED = 17,
+    SEEK_FAILED = 18,
+    SEEK_STARTED = 19,
+    ERROR = 105,
     SOURCE_CHANGED  = 3000,
     POSITION_JUMPED = 3001,
     SOURCE_UNREACHABLE = 19000,
-    SOURCE_ONLINE      = 19001,
-    SOURCE_OFFLINE     = 19002,
-    VIDEO_FIRST_FRAME  = 20000,
-    RECORD_STARTED     = 20100,
-    RECORD_STOPPED     = 20101,
-    RECORD_CLOSED      = 20102,
+    SOURCE_ONLINE = 19001,
+    SOURCE_OFFLINE = 19002,
+    VIDEO_FIRST_FRAME = 20000,
+    RECORD_STARTED = 20100,
+    RECORD_STOPPED = 20101,
+    RECORD_CLOSED = 20102,
     SOURCE_CHANGED_WAIT_RECORDS_UPLOAD_STARTED  = 20103,
     SOURCE_CHANGED_WAIT_RECORDS_UPLOAD_CONTINUE = 20104,
-    SOURCE_CHANGED_WAIT_RECORDS_UPLOAD_STOPPED  = 20105
+    SOURCE_CHANGED_WAIT_RECORDS_UPLOAD_STOPPED = 20105
 };
 
-typedef NS_ENUM(int, CPlayerStates)
-{
+typedef NS_ENUM(int, CPlayerStates) {
     CPlayerStateConnecting = 0,
-    CPlayerStateConnected  = 1,
-    CPlayerStateStarted    = 2,
-    CPlayerStatePaused     = 3,
-    CPlayerStateClosed     = 4,
-    CPlayerStateEOS        = 12,
+    CPlayerStateConnected = 1,
+    CPlayerStateStarted = 2,
+    CPlayerStatePaused = 3,
+    CPlayerStateClosed  = 4,
+    CPlayerStateEOS = 12,
 };
 
-typedef NS_ENUM(int, CPlayerModes)
-{
-    CPlayerModeLive     = 1 << 0,
+typedef NS_ENUM(int, CPlayerModes) {
+    CPlayerModeLive  = 1 << 0,
     CPlayerModePlayback = 1 << 1
 };
 
-typedef NS_ENUM(int, CPlayerLocalRecordFlags)
-{
+typedef NS_ENUM(int, CPlayerLocalRecordFlags) {
     CPlayerLocalRecordFlagsNoSart = 0x00000000,
     CPlayerLocalRecordFlagsAutoStart = 0x00000001,
     CPlayerLocalRecordFlagsSplitByTime = 0x00000002,
@@ -74,8 +71,7 @@ typedef NS_ENUM(int, CPlayerLocalRecordFlags)
     CPlayerLocalRecordFlagsFragCustom = 0x00000480
 };
 
-typedef NS_ENUM(int, CPlayerLocalRecordStats)
-{
+typedef NS_ENUM(int, CPlayerLocalRecordStats) {
     CPlayerLocalRecordStatsLastError = 0, //last error
     CPlayerLocalRecordStatsDuration = 1, //in msec
     CPlayerLocalRecordStatsSize = 2, //in bytes
@@ -101,205 +97,232 @@ typedef NS_ENUM(int, CPlayerLiveUrlType) {
     CPlayerLiveUrlTypeRTSP = 4
 };
 
+typedef NS_ENUM(int, CPlayerPlaybackModes) {
+    CPlayerPlaybackModeCloud = 1 << 0,
+    CPlayerPlaybackModeMemoryCard = 1 << 1
+};
+
 typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> player);
 
 @protocol ICloudCPlayerCallback
--(void) Status: (CloudPlayerEvent) status_code object: (id<ICloudCObject>) player;
--(int) OnAudioMicrophoneFrameAvailable: (id<ICloudCObject>)player
-                                 frame: (nonnull CMSampleBufferRef)frame
-                         averageLevels: (nullable float*)avrLevels
-                     averageLevelsSize: (size_t)avrLevelsSize;
+-(void) Status:(CloudPlayerEvent) status_code
+        object:(id<ICloudCObject>) player;
+-(int) OnAudioMicrophoneFrameAvailable:(id<ICloudCObject>) player
+                                 frame:(nonnull CMSampleBufferRef) frame
+                         averageLevels:(nullable float*) avrLevels
+                     averageLevelsSize:(size_t) avrLevelsSize;
 @end
 
 // protocol
 @protocol CloudPlayerSDKDelegate<NSObject>
 
 @optional
--(int) OnPlayingPositionChanged:(long long)position
-                   withDuration:(long long)duration
-                 withRangeStart:(long long)rangeStart
-                   withRangeEnd:(long long)rangeEnd;
--(int) onSharedTokenWillExpireIn:(long long)deltaTimeInMs;
+-(int) OnPlayingPositionChanged:(long long) position
+                   withDuration:(long long) duration
+                 withRangeStart:(long long) rangeStart
+                   withRangeEnd:(long long) rangeEnd;
+-(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 
 @end
 
-@interface CPlayerConfig : NSObject
+@interface CPlayerConfig: NSObject
 -(instancetype) init;
--(void) visibleControls: (Boolean) bControls;
+-(void) visibleControls:(Boolean) bControls;
 -(Boolean) getVisibleControls;
--(void) videoDecoderType: (int) type;
+-(void) videoDecoderType:(int) type;
 -(int) getVideoDecoderType;
--(void) aspectRatio: (int) mode;
+-(void) aspectRatio:(int) mode;
 -(int)  getAspectRatio;
--(void) zoomAspectRatio: (int) zoom;
+-(void) zoomAspectRatio:(int) zoom;
 -(int) getZoomAspectRatio;
--(void) zoomMinAspectRatio: (int) zoom;
+-(void) zoomMinAspectRatio:(int) zoom;
 -(int) getZoomMinAspectRatio;
--(void) zoomMaxAspectRatio: (int) zoom;
+-(void) zoomMaxAspectRatio:(int) zoom;
 -(int) getZoomMaxAspectRatio;
--(void) moveXAspectRatio: (int) x;
+-(void) moveXAspectRatio:(int) x;
 -(int) getMoveXAspectRatio;
--(void) moveYAspectRatio: (int) y;
+-(void) moveYAspectRatio:(int) y;
 -(int) getMoveYAspectRatio;
--(void) setMinLatency: (long) latency;
+-(void) setMinLatency:(long) latency;
 -(long) getMinLatency;
 -(void) setBufferOnStart:(int) buffering_time;
 -(int) getBufferOnStart;
--(void) setLicenseKey: (NSString*) license;
+-(void) setLicenseKey:(NSString*) license;
 -(NSString*) getLicenseKey;
 
--(void) setFFRate: (int) rate;
+-(void) setFFRate:(int) rate;
 -(int) getFFRate;
 
--(void) setEnableInternalGestureRecognizers: (int) values;
+-(void) setEnableInternalGestureRecognizers:(int) values;
 -(int) getEnableInternalGestureRecognizers;
--(void) setEnableInternalAudioSessionConfigure: (int) enable;
+-(void) setEnableInternalAudioSessionConfigure:(int) enable;
 -(int) getEnableInternalAudioSessionConfigure;
--(void) setInternalAudioSessionMode: (NSString*) mode;
+-(void) setInternalAudioSessionMode:(NSString*) mode;
 -(NSString*) getInternalAudioSessionMode;
--(void) setInternalAudioSessionCategory: (NSString*) category;
+-(void) setInternalAudioSessionCategory:(NSString*) category;
 -(NSString*) getInternalAudioSessionCategory;
--(void) setInternalAudioSessionCategoryOptions: (NSUInteger) options;
+-(void) setInternalAudioSessionCategoryOptions:(NSUInteger) options;
 -(NSUInteger) getInternalAudioSessionCategoryOptions;
--(void) setEnableInternalAudioUnitVPIO: (int) enable;
+-(void) setEnableInternalAudioUnitVPIO:(int) enable;
 -(int) getEnableInternalAudioUnitVPIO;
 
--(void) setLatencyPreset: (int) preset;
+-(void) setLatencyPreset:(int) preset;
 -(int) getLatencyPreset;
-- (void) setConnectionDetectionTime: (int) val;
+- (void) setConnectionDetectionTime:(int) val;
 - (int) getConnectionDetectionTime;
-- (void) setConnectionNetworkProtocol: (int) val;
+- (void) setConnectionNetworkProtocol:(int) val;
 - (int) getConnectionNetworkProtocol;
-- (void) setConnectionBufferingTime: (int) val;
+- (void) setConnectionBufferingTime:(int) val;
 - (int) getConnectionBufferingTime;
 
-- (void) setPlayerType: (int) val;
+- (void) setPlayerType:(int) val;
 - (int) getPlayerType;
 
--(void) setConnectionMonitorType: (int) type;
+-(void) setConnectionMonitorType:(int) type;
 -(int) getConnectionMonitorType;
 
--(void) setLiveUrlType: (CPlayerLiveUrlType) type;
+-(void) setLiveUrlType:(CPlayerLiveUrlType) type;
 -(CPlayerLiveUrlType) getLiveUrlType;
 
--(void) setWorkaroundForceLiveUrlTypeForTokenWithPath: (CPlayerLiveUrlType) type;
+-(void) setPlaybackMode:(CPlayerPlaybackModes) type;
+-(CPlayerPlaybackModes) getPlaybackMode;
+
+-(void) setWorkaroundForceLiveUrlTypeForTokenWithPath:(CPlayerLiveUrlType) type;
 -(CPlayerLiveUrlType) getWorkaroundForceLiveUrlTypeForTokenWithPath;
 
--(void) setWorkaroundWaitWhileRecordsUploaded: (int) valueInMs;
+-(void) setWorkaroundWaitWhileRecordsUploaded:(int) valueInMs;
 -(int) getWorkaroundWaitWhileRecordsUploaded;
 
--(void) setAdvancedOptionProbeSize: (int) size;
+-(void) setAdvancedOptionProbeSize:(int) size;
 -(int) getAdvancedOptionProbeSize;
 
--(void) setAdvancedOptionFpsProbeSize: (int) size;
+-(void) setAdvancedOptionFpsProbeSize:(int) size;
 -(int) getAdvancedOptionFpsProbeSize;
 
--(void) setAdvancedOptionFormatProbeSize: (int) size;
+-(void) setAdvancedOptionFormatProbeSize:(int) size;
 -(int) getAdvancedOptionFormatProbeSize;
 
--(void) setAdvancedOptionMaxProbePackets: (int) packets;
+-(void) setAdvancedOptionMaxProbePackets:(int) packets;
 -(int) getAdvancedOptionMaxProbePackets;
 
--(void) setAdvancedOptionHlsLiveStartIndex: (int) index;
+-(void) setAdvancedOptionHlsLiveStartIndex:(int) index;
 -(int) getAdvancedOptionHlsLiveStartIndex;
 
--(void) setAdvancedOptionRtmpBuffer: (int) size;
+-(void) setAdvancedOptionRtmpBuffer:(int) size;
 -(int) getAdvancedOptionRtmpBuffer;
 
--(void) setAdvancedOptionRtmpLive: (NSString*) value;
+-(void) setAdvancedOptionRtmpLive:(NSString*) value;
 -(NSString*) getAdvancedOptionRtmpLive;
 
--(void) setAdvancedOptionReconnectOnHttpError: (NSString*) codes;
+-(void) setAdvancedOptionReconnectOnHttpError:(NSString*) codes;
 -(NSString*) getAdvancedOptionReconnectOnHttpError;
 
--(void) setCloudApiPort: (int) port;
+-(void) setCloudApiPort:(int) port;
 -(int) getCloudApiPort;
 
--(void) setCloudApiProtocolType: (CCloudApiProtocolType) type;
+-(void) setCloudApiProtocolType:(CCloudApiProtocolType) type;
 -(CCloudApiProtocolType) getCloudApiProtocolType;
 
--(void) setCloudApiProtocolDefaults: (CCloudApiProtocolDefaults) type;
+-(void) setCloudApiProtocolDefaults:(CCloudApiProtocolDefaults) type;
 
--(void) setShareTokenExpireCheckingTickRate: (long long) rateInMs;
+-(void) setShareTokenExpireCheckingTickRate:(long long) rateInMs;
 -(long long) getShareTokenExpireCheckingTickRate;
 
--(void) setShareTokenExpireNotificationDeltaTimeGuard: (long long) deltaTimeGuardInMs;
+-(void) setShareTokenExpireNotificationDeltaTimeGuard:(long long) deltaTimeGuardInMs;
 -(long long) getShareTokenExpireNotificationDeltaTimeGuard;
 
 // local record config
 -(NSString*) getLocalRecordPath;
--(void) setLocalRecordPath: (NSString*)path;
+-(void) setLocalRecordPath:(NSString*) path;
 
--(CPlayerLocalRecordFlags) getLocalRecordFlags;         // 0: stopped. 1: autostart rec. see PlayerRecordFlags
--(void) setLocalRecordFlags: (CPlayerLocalRecordFlags)flags;
+-(CPlayerLocalRecordFlags) getLocalRecordFlags; // 0: stopped. 1: autostart rec. see PlayerRecordFlags
+-(void) setLocalRecordFlags:(CPlayerLocalRecordFlags) flags;
 
 -(uint64_t) getLocalRecordFrameDuration; // duration in ms , workaround for some server that provide wrong PTS
--(void) setLocalRecordFrameDuration: (uint64_t)duration;
+-(void) setLocalRecordFrameDuration:(uint64_t) duration;
 
--(uint64_t) getLocalRecordSplitTime;     // seconds. in case PP_RECORD_SPLIT_BY_TIME
--(void) setLocalRecordSplitTime: (uint64_t)time;
+-(uint64_t) getLocalRecordSplitTime; // seconds. in case PP_RECORD_SPLIT_BY_TIME
+-(void) setLocalRecordSplitTime:(uint64_t) time;
 
--(uint64_t) getLocalRecordSplitSize;     // MB.   in case PP_RECORD_SPLIT_BY_SIZE
--(void) setLocalRecordSplitSize: (uint64_t)size;
+-(uint64_t) getLocalRecordSplitSize; // MB.   in case PP_RECORD_SPLIT_BY_SIZE
+-(void) setLocalRecordSplitSize:(uint64_t) size;
 
 -(NSString*) getLocalRecordPrefix;
--(void) setLocalRecordPrefix: (NSString*)prefix;
+-(void) setLocalRecordPrefix:(NSString*) prefix;
 
--(int64_t) getLocalRecordTrimPosStart;  // in ms. (-1) not set, all duration.
--(void) setLocalRecordTrimPosStart: (int64_t)startPos;
+-(int64_t) getLocalRecordTrimPosStart; // in ms. (-1) not set, all duration.
+-(void) setLocalRecordTrimPosStart:(int64_t) startPos;
 
--(int64_t) getLocalRecordTrimPosEnd;    // in ms. (-1) not set, all duration.
--(void) setLocalRecordTrimPosEnd: (int64_t)endPos;
+-(int64_t) getLocalRecordTrimPosEnd; // in ms. (-1) not set, all duration.
+-(void) setLocalRecordTrimPosEnd:(int64_t) endPos;
 
-+ (void)setLogLevel:(int)newValue;
-+ (void)setMediaPlayerLogLevelForObjcPart:(int)objcValue forNativePart:(int)nativeValue forMediaPart:(int)mediaValue;
++ (void)setLogLevel:(int) newValue;
++ (void)setMediaPlayerLogLevelForObjcPart:(int) objcValue
+                            forNativePart:(int) nativeValue
+                             forMediaPart:(int) mediaValue;
 
 @end
 
-@interface CloudPlayerSDK : NSObject<ICloudCObject>
+@interface CloudPlayerSDK: NSObject<ICloudCObject>
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
 
--(instancetype)initWithParams: (UIView*) view
-                      config : (CPlayerConfig*) config
-                    callback : (CPlayerCallback) callbacks;
+-(instancetype)initWithParams:(UIView*) view
+                       config:(CPlayerConfig*) config
+                     callback:(CPlayerCallback) callbacks;
 
--(instancetype)initWithParams:(UIView *)view
-                       config:(CPlayerConfig *)config
-            protocol_callback: (id<ICloudCPlayerCallback>)callbacks;
+-(instancetype)initWithParams:(UIView*) view
+                       config:(CPlayerConfig*) config
+            protocol_callback:(id<ICloudCPlayerCallback>) callbacks;
 
--(void) setDelegate: (id<CloudPlayerSDKDelegate>) delegate;
+-(void) setDelegate:(id<CloudPlayerSDKDelegate>) delegate;
 -(id<CloudPlayerSDKDelegate>) getDelegate;
 
--(int) setSource: (NSString*) source;
--(int) setSource: (NSString*) source withPosition:(long long)position;
--(int) setConfig: (CPlayerConfig*) config;
+-(int) setSource:(NSString*) source;
+-(int) setSource:(NSString*) source
+    withPosition:(long long) position;
+
+-(int) setConfig:(CPlayerConfig*) config;
 -(CPlayerConfig*) getConfig;
+
 -(void) play;
 -(void) pause;
 -(void) close;
+
 -(CPlayerStates) getState;
--(void) setPrefferedMode: (CPlayerModes)mode;
+-(void) setPrefferedMode:(CPlayerModes)mode;
 -(CPlayerModes) getPrefferedMode;
+
 -(void) setPosition:(long long) nPosition;
 -(long long) getPosition;
 -(Boolean) isLive;
+
 -(void) mute:(Boolean) bMmute;
 -(Boolean) isMute;
 -(void) setVolume:(int) vol;
 -(int) getVolume;
 
 -(void) showTimeline:(UIView*) vwTimeline;
--(void) showTimeline:(UIView*)timelineContainer withCalendarContainer:(UIView*)calendarContainer;
+-(void) showTimeline:(UIView*) timelineContainer withCalendarContainer:(UIView*) calendarContainer;
 -(CTimelineConfig*) getTimelineConfig;
 -(void) applyTimelineConfig;
--(void) setTimelineStyle:(UIColor*)main lineColor:(UIColor*)line textColor:(UIColor*)text textBackgroundColor:(UIColor*)textBackground trackColor:(UIColor*)track knobColor:(UIColor *)knob strokeColor:(UIColor*)stroke rangeColor:(UIColor*)range;
--(void) setTimelineStyle:(CTimelineStyle*)style;
+-(void) setTimelineStyle:(UIColor*) main
+               lineColor:(UIColor*) line
+               textColor:(UIColor*) text
+     textBackgroundColor:(UIColor*) textBackground
+              trackColor:(UIColor*) track
+               knobColor:(UIColor*) knob
+             strokeColor:(UIColor*) stroke
+              rangeColor:(UIColor*) range;
+-(void) setTimelineStyle:(CTimelineStyle*) style;
 -(CTimelineStyle*) getTimelineStyle;
--(void) setTimelineScale:(CTimelineScaleType)scale;
+-(void) setTimelineScale:(CTimelineScaleType) scale;
 -(CTimelineScaleType) getTimelineScale;
--(void) setRange: (int64_t) start_time end_time: (int64_t) end_time;
--(void) getRange: (int64_t*) start_time end_time: (int64_t*) end_time;
+
+-(void) setRange:(int64_t) start_time
+        end_time:(int64_t) end_time;
+-(void) getRange:(int64_t*) start_time
+        end_time:(int64_t*) end_time;
 -(void) unsetRange;
 -(void) hideTimeline;
 
@@ -308,129 +331,244 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(NSString*) getPreviewURLSync;
 -(void) getPreviewURL:(void (^)(NSObject* obj, int status)) complete;
 -(CPreviewImage*) getPreviewImageSync;
--(void) getPreviewImage:(void (^)(NSObject *, int))complete;
--(int) getVideoShot: (void*)buffer
-        buffer_size: (int32_t*)buffer_size
-              width: (int32_t*)width
-             height: (int32_t*)height
-      bytes_per_row: (int32_t*)bytes_per_row;
-- (int) getViewSizesAndVideoAspects: (int32_t*)view_orientation
-                         view_width: (int32_t*)view_width
-                        view_height: (int32_t*)view_height
-                        video_width: (int32_t*)video_width
-                       video_height: (int32_t*)video_height
-                        aspect_left: (int32_t*)aspect_left
-                         aspect_top: (int32_t*)aspect_top
-                       aspect_width: (int32_t*)aspect_width
-                      aspect_height: (int32_t*)aspect_height
-                        aspect_zoom: (int32_t*)aspect_zoom;
-- (void) setFFRate: (int32_t)rate;
+-(void) getPreviewImage:(void (^)(NSObject*, int)) complete;
+
+-(int) getVideoShot:(void*) buffer
+        buffer_size:(int32_t*) buffer_size
+              width:(int32_t*) width
+             height:(int32_t*) height
+      bytes_per_row:(int32_t*) bytes_per_row;
+- (int) getViewSizesAndVideoAspects:(int32_t*) view_orientation
+                         view_width:(int32_t*) view_width
+                        view_height:(int32_t*) view_height
+                        video_width:(int32_t*) video_width
+                       video_height:(int32_t*) video_height
+                        aspect_left:(int32_t*) aspect_left
+                         aspect_top:(int32_t*) aspect_top
+                       aspect_width:(int32_t*) aspect_width
+                      aspect_height:(int32_t*) aspect_height
+                        aspect_zoom:(int32_t*) aspect_zoom;
+
+- (void) setFFRate:(int32_t) rate;
 - (void) updateView;
 
 -(long long) getTimeLive;
 -(void) setTimeLive:(long long) utc_time;
 -(void) setTimezone:(NSString*) tz;
 -(NSString*) getTimezone;
--(void) setName: (NSString*) name;
+
+-(void) setName:(NSString*) name;
 -(NSString*) getName;
+
 -(CCStatus) getStatus;
 -(NSDictionary*) getEventsInfo;
 -(Boolean) getPublic;
--(void) setPublic: (Boolean) isPublic;
+-(void) setPublic:(Boolean) isPublic;
 -(Boolean) isOwner;
 
 -(CCRecordingMode) getRecordingMode;
 -(void) setRecordingMode:(CCRecordingMode) rec_mode;
 
-- (void) localRecordSetup: (NSString*)path
-                    flags: (CPlayerLocalRecordFlags)flags
-                splitTime: (int32_t)splitTime
-                splitSize: (int32_t)splitSize
-                   prefix: (NSString*)prefix;
+// local record
+- (void) localRecordSetup:(NSString*) path
+                    flags:(CPlayerLocalRecordFlags) flags
+                splitTime:(int32_t) splitTime
+                splitSize:(int32_t) splitSize
+                   prefix:(NSString*) prefix;
 -(Boolean) isLocalRecordStarted;
 -(void) localRecordStart;
 -(void) localRecordStop;
--(int64_t) localRecordGetStat: (CPlayerLocalRecordStats)param;
--(NSString*) localRecordGetFileName: (int32_t)param;
+-(int64_t) localRecordGetStat:(CPlayerLocalRecordStats) param;
+-(NSString*) localRecordGetFileName:(int32_t) param;
 
 -(CCPrivacyMode) getPrivacyMode;
--(void) setPrivacyMode: (CCPrivacyMode) mode;
-
--(CTimeline*) getTimelineSync: (long long)start  end: (long long)end;
--(int) getTimeline: (long long)start end: (long long)end onComplete: (void (^)(NSObject *, int))complete;
--(NSMutableArray<NSString*> *) getActivitySync:(Boolean)isCameraId
-                                         start:(long long)start
-                                           end:(long long)end
-                                        events:(NSString*)events
-                                    boundstime:(NSNumber*)isBoundstime
-                                   daysincamtz:(NSNumber*)isDaysincamtz
-                                         limit:(int)limit
-                                        offset:(int)offset;
--(int) getActivity:(Boolean)isCameraId
-             start:(long long)start
-               end:(long long)end
-            events:(NSString*)events
-        boundstime:(NSNumber*)isBoundstime
-       daysincamtz:(NSNumber*)isDaysincamtz
-             limit:(int)limit
-            offset:(int)offset
-        onComplete:(void (^)(NSObject *, int))complete;
--(NSMutableArray<NSString*> *) getCalendarSync:(long long)start end:(long long)end limit:(int)limit offset:(int)offset;
--(int) getCalendar:(long long)start end:(long long)end limit:(int)limit offset:(int)offset onComplete:(void (^)(NSObject *, int))complete;
--(NSDictionary*) getImagesSync: (long long)start end: (long long)end limit:(uint) limit offset:(uint) offset order: (Boolean)is_ascending;
--(int) getImages: (long long)start end: (long long)end limit: (uint) limit offset:(uint) offset order: (Boolean)is_ascending onComplete:(void (^)(NSObject *, int))complete;
--(NSDictionary*) getTimelineThumbnailsSync: (long long)start  end: (long long)end order: (Boolean)is_ascending;
--(int) getTimelineThumbnails: (long long)start end: (long long)end order: (Boolean)is_ascending onComplete: (void (^)(NSObject *, int))complete;
-//events
--(NSDictionary*) getEventsSync: (long long)start end: (long long)end limit: (long) limit offset:(long) offset events:(NSString*) events order: (Boolean)is_ascending;
--(int) getEvents: (long long)start end: (long long)end limit: (long) limit offset:(long) offset events:(NSString*) events order: (Boolean)is_ascending onComplete:(void (^)(NSObject *, int))complete;
--(int) getEvent: (long long) eventid onComplete:(void (^)(NSObject *, int))complete;
--(int) deleteEvent: (long long) eventid onComplete:(void (^)(NSObject *, int))complete;
-//clips
--(int) getClips: (long long)start end: (long long)end limit: (long) limit offset:(long) offset order: (Boolean)is_ascending onComplete:(void (^)(NSObject *, int))complete;
--(int) createClip: (NSString*) title start: (long long)start end: (long long)end deleteAt: (long long ) delete_at  onComplete:(void (^)(NSObject *, int))complete ;
--(int) getClip: (long long) clipid onComplete:(void (^)(NSObject *, int))complete ;
--(int) deleteClip: (long long) clipid onComplete:(void (^)(NSObject *, int))complete;
-//ptz
--(void) getPTZ: (void (^)(NSObject *, int))complete;
--(void) executePTZ: (NSString*) action timeout:(NSNumber*) timeout onComplete: (void (^)(NSObject *, int))complete;
-//settings
--(void) getStreams:    (void (^)(NSObject* obj, int status)) complete;
--(void) getVideoStreamByVsid:  (NSString*) vsid callback:  (void (^)(NSObject* obj, int status)) complete;
--(void) updateVideoStreamByVsid: (NSString*) vsid
-                        resolution_width: (uint32_t) rwidth
-                       resolution_height: (uint32_t) rheight
-                                     fps: (float) fps
-                                     gop: (uint32_t) gop
-                                complete: (void (^)(NSObject* obj, int status)) complete;
-
--(void) getCameraVideoSettings: (void (^)(NSObject* obj, int status)) complete;
--(void) updateCameraVideoSettings:  (NSDictionary*) vsettings complete: (void (^)(NSObject* obj, int status)) complete;
--(void) getCameraOSD:  (void (^)(NSObject* obj, int status)) complete;
--(void) updateCameraOSD: (NSDictionary*) osdsettings complete: (void (^)(NSObject* obj, int status)) complete;
--(void) getCameraMotionDetection: (void (^)(NSObject* obj, int status)) complete;
--(void) updateCameraMotionDetection:  (NSDictionary*) settings complete: (void (^)(NSObject* obj, int status)) complete;
--(void) updateCameraAudio:  (NSDictionary*) settings complete: (void (^)(NSObject* obj, int status)) complete;
--(void) getCameraAudio:  (void (^)(NSObject* obj, int status)) complete;
-
--(void) triggerEvent:(NSString*)name
-            withTime:(NSString*)time
-            withMeta:(NSDictionary*)meta
-            complete:(void (^)(NSObject* obj, int status))complete;
-
-//wifi settings
--(void) getCameraWifiListLimit: (unsigned int) limit
-                            offset: (unsigned int) offset
-                      callback: (void (^)(NSObject* obj, int status)) complete ;
--(void) updateCameraWifiList: (void (^)(NSObject* obj, int status)) complete ;
--(void) getCameraSelectedWifi: (void (^)(NSObject* obj, int status)) complete ;
--(void) setCameraSelectedWifi: (NSDictionary*) wifiInfo
-                     callback: (void (^)(NSObject* obj, int status)) complete ;
+-(void) setPrivacyMode:(CCPrivacyMode) mode;
 
 -(NSString*) getBackwardUrl;
--(void) getLiveUrls: (void (^)(NSObject *, int))complete;
+-(void) getLiveUrls:(void (^)(NSObject*, int)) complete;
 
--(void) setLngLtdBounds:(double) latitude : (double)longitude;
+-(NSMutableArray<NSString*>*) getActivitySync:(Boolean) isCameraId
+                                        start:(long long) start
+                                          end:(long long) end
+                                       events:(NSString*) events
+                                   boundstime:(NSNumber*) isBoundstime
+                                  daysincamtz:(NSNumber*) isDaysincamtz
+                                        limit:(int) limit
+                                       offset:(int) offset;
+-(int) getActivity:(Boolean) isCameraId
+             start:(long long) start
+               end:(long long) end
+            events:(NSString*) events
+        boundstime:(NSNumber*) isBoundstime
+       daysincamtz:(NSNumber*) isDaysincamtz
+             limit:(int) limit
+            offset:(int) offset
+        onComplete:(void (^)(NSObject*, int)) complete;
+-(NSMutableArray<NSString*>*) getCalendarSync:(long long) start
+                                          end:(long long) end
+                                        limit:(int) limit
+                                       offset:(int) offset;
+
+-(int) getRecords:(long long) start
+              end:(long long) end
+            order:(Boolean) isAscending
+            limit:(long) limit
+           offset:(long) offset
+       onComplete:(void (^)(NSObject *, int)) complete;
+-(int) getRecords:(long long) start
+              end:(long long) end
+            order:(Boolean) isAscending
+            limit:(long) limit
+           offset:(long) offset
+      isTempFiles:(NSNumber*) isTempFiles
+       onComplete:(void (^)(NSObject *, int)) complete;
+
+-(int) getCalendar:(long long) start
+               end:(long long) end
+             limit:(int) limit
+            offset:(int) offset
+        onComplete:(void (^)(NSObject*, int)) complete;
+
+-(NSDictionary*) getImagesSync:(long long) start
+                           end:(long long) end
+                         limit:(uint) limit
+                        offset:(uint) offset
+                         order:(Boolean) is_ascending;
+-(int) getImages:(long long) start
+             end:(long long) end
+           limit:(uint) limit
+          offset:(uint) offset
+           order:(Boolean) is_ascending
+      onComplete:(void (^)(NSObject*, int)) complete;
+
+-(CTimeline*) getTimelineSync:(long long) start
+                          end:(long long) end;
+-(int) getTimeline:(long long) start
+               end:(long long) end
+        onComplete:(void (^)(NSObject*, int)) complete;
+-(NSDictionary*) getTimelineThumbnailsSync:(long long) start
+                                       end:(long long) end
+                                     order:(Boolean) is_ascending;
+-(int) getTimelineThumbnails:(long long) start
+                         end:(long long) end
+                       order:(Boolean) is_ascending
+                  onComplete:(void (^)(NSObject*, int)) complete;
+-(int) getTimelineThumbnails:(long long) start
+                         end:(long long) end
+                      origin:(NSString*) origin
+                   originIds:(NSArray*) originIds
+                       limit:(uint) limit
+                      offset:(uint) offset
+                       order:(Boolean) is_ascending
+                  onComplete:(void (^)(NSObject *, int)) complete;
+
+//events
+-(NSDictionary*) getEventsSync:(long long) start
+                           end:(long long) end
+                         limit:(long) limit
+                        offset:(long) offset
+                        events:(NSString*) events
+                         order:(Boolean) is_ascending;
+-(int) getEvents:(long long) start
+             end:(long long) end
+           limit:(long) limit
+          offset:(long) offset
+          events:(NSString*) events
+           order:(Boolean) is_ascending
+      onComplete:(void (^)(NSObject*, int)) complete;
+-(int) getEvent:(long long) eventid
+     onComplete:(void (^)(NSObject*, int)) complete;
+-(void) triggerEvent:(NSString*) name
+            withTime:(NSString*) time
+            withMeta:(NSDictionary*) meta
+            complete:(void (^)(NSObject* obj, int status)) complete;
+-(int) deleteEvent:(long long) eventid
+        onComplete:(void (^)(NSObject*, int)) complete;
+
+//clips
+-(int) getClips:(long long) start
+            end:(long long) end
+          limit:(long) limit
+         offset:(long) offset
+          order:(Boolean) is_ascending
+     onComplete:(void (^)(NSObject*, int)) complete;
+-(int) getClips:(long long) start
+            end:(long long) end
+          limit:(long) limit
+         offset:(long) offset
+          order:(Boolean) is_ascending
+        orderBy:(COrderByValue) orderValue
+     onComplete:(void (^)(NSObject*, int)) complete;
+-(int) createClip:(NSString*) title
+            start:(long long) start
+              end:(long long) end
+         deleteAt:(long long) delete_at
+       onComplete:(void (^)(NSObject*, int)) complete ;
+-(int) getClip:(long long) clipid
+    onComplete:(void (^)(NSObject*, int)) complete ;
+-(int) deleteClip:(long long) clipid
+       onComplete:(void (^)(NSObject*, int)) complete;
+
+//ptz
+-(void) getPTZ:(void (^)(NSObject*, int)) complete;
+-(void) executePTZ:(NSString*) action
+           timeout:(NSNumber*) timeout
+        onComplete:(void (^)(NSObject*, int)) complete;
+
+//settings
+-(void) getStreams:(void (^)(NSObject* obj, int status)) complete;
+-(void) getVideoStreamByVsid:(NSString*) vsid
+                    callback:(void (^)(NSObject* obj, int status)) complete;
+-(void) updateVideoStreamByVsid:(NSString*) vsid
+               resolution_width:(uint32_t) rwidth
+              resolution_height:(uint32_t) rheight
+                            fps:(float) fps
+                            gop:(uint32_t) gop
+                       complete:(void (^)(NSObject* obj, int status)) complete;
+-(void) getCameraVideoSettings:(void (^)(NSObject* obj, int status)) complete;
+-(void) updateCameraVideoSettings:(NSDictionary*) vsettings
+                         complete: (void (^)(NSObject* obj, int status)) complete;
+-(void) getCameraOSD:(void (^)(NSObject* obj, int status)) complete;
+-(void) updateCameraOSD:(NSDictionary*) osdsettings
+               complete: (void (^)(NSObject* obj, int status)) complete;
+-(void) getCameraMotionDetection:(void (^)(NSObject* obj, int status)) complete;
+-(void) updateCameraMotionDetection:(NSDictionary*) settings
+                           complete:(void (^)(NSObject* obj, int status)) complete;
+-(void) updateCameraAudio:(NSDictionary*) settings
+                 complete:(void (^)(NSObject* obj, int status)) complete;
+-(void) getCameraAudio:(void (^)(NSObject* obj, int status)) complete;
+
+//wifi settings
+-(void) getCameraWifiListLimit:(unsigned int) limit
+                        offset:(unsigned int) offset
+                      callback:(void (^)(NSObject* obj, int status)) complete ;
+-(void) updateCameraWifiList:(void (^)(NSObject* obj, int status)) complete ;
+-(void) getCameraSelectedWifi:(void (^)(NSObject* obj, int status)) complete ;
+-(void) setCameraSelectedWifi:(NSDictionary*) wifiInfo
+                     callback:(void (^)(NSObject* obj, int status)) complete ;
+
+// memory card
+-(int) getMemoryCardInfo:(void (^)(NSObject* obj, int status)) complete;
+-(int) getMemoryCardTimeline:(long long) start
+                         end:(long long) end
+                pollingDelay:(int) delayInMs
+               isInterrupted:(Boolean (^)(void)) isInterrupted
+               onRequestedId:(void (^)(NSString* rid)) requestedId
+             onPendingStatus:(void (^)(NSObject* obj, int status)) pendingStatus
+                  onComplete:(void (^)(NSObject* obj, int status)) complete;
+-(int) synchronizeMemoryCard:(long long) start
+                         end:(long long) end
+                pollingDelay:(int) delayInMs
+               isInterrupted:(Boolean (^)(void)) isInterrupted
+               onRequestedId:(void (^)(NSString* rid)) requestedId
+             onPendingStatus:(void (^)(NSObject* obj, int status)) pendingStatus
+       onSegmentSynchronized:(void (^)(NSObject* obj, int status)) segmentSynchronized
+                  onComplete:(void (^)(NSObject* obj, int status)) complete;
+-(int) cancelSynchronizeMemoryCard:(NSString*) rid
+                        onComplete:(void (^)(NSObject* obj, int status)) complete;
+
+-(void) setLngLtdBounds:(double) latitude
+                       :(double) longitude;
 -(double) getLat;
 -(double) getLng;
 

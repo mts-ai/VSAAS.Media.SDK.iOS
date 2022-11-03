@@ -10,16 +10,14 @@
 #import "CloudPlayer.h"
 #import "CloudCamera.h"
 
-typedef NS_OPTIONS(int, TimelineScaleType)
-{
+typedef NS_OPTIONS(int, TimelineScaleType) {
     TIMELINE_SCALE_MINUTE = 0,
     TIMELINE_SCALE_HOUR   = 1,
     TIMELINE_SCALE_12HOUR = 2,
     TIMELINE_SCALE_RANGE  = 3
 };
 
-typedef NS_OPTIONS(int, TimelineControls)
-{
+typedef NS_OPTIONS(int, TimelineControls) {
     TIMELINE_CONTROL_TORIGHT   = 1 << 0,
     TIMELINE_CONTROL_TOLEFT    = 1 << 1,
     TIMELINE_CONTROL_CALENDAR  = 1 << 2,
@@ -27,7 +25,7 @@ typedef NS_OPTIONS(int, TimelineControls)
 };
 
 // config for timeline
-@interface TimelineConfig : NSObject
+@interface TimelineConfig: NSObject
 
 // controls visibility
 @property (nonatomic) TimelineControls controls;
@@ -38,12 +36,12 @@ typedef NS_OPTIONS(int, TimelineControls)
 @end
 
 // data provider content
-@interface TimelinePair : NSObject
+@interface TimelinePair: NSObject
 @property long long start;
 @property long long end;
 @end
 
-@interface Timeline : NSObject
+@interface Timeline: NSObject
 @property long long start;
 @property long long end;
 @property NSArray<TimelinePair*>* periods;
@@ -57,17 +55,17 @@ typedef NS_OPTIONS(int, TimelineControls)
                                 end:(long long) end;
 
 @optional
--(int) OnTimelinePositionChanged:(long long)position
-                    withDuration:(long long)duration
-                  withRangeStart:(long long)rangeStart
-                    withRangeEnd:(long long)rangeEnd;
+-(int) OnTimelinePositionChanged:(long long) position
+                    withDuration:(long long) duration
+                  withRangeStart:(long long) rangeStart
+                    withRangeEnd:(long long) rangeEnd;
 
 @optional
--(int) onSharedTokenWillExpireIn:(long long)deltaTimeInMs;
+-(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 
 @end
 
-@interface TimelineView : UIView
+@interface TimelineView: UIView
 
 +(instancetype)new NS_UNAVAILABLE;
 -(instancetype)init NS_UNAVAILABLE;
@@ -102,34 +100,35 @@ typedef NS_OPTIONS(int, TimelineControls)
 -(void) applyConfig;
 
 // common approach
--(void) setDelegate: (id<TimelineViewDelegate>) delegate;
+-(void) setDelegate:(id<TimelineViewDelegate>) delegate;
 -(id<TimelineViewDelegate>) getDelegate;
 
 // player approach
--(void) setPlayer: (CloudPlayer*) player;
+-(void) setPlayer:(CloudPlayer*) player;
 -(CloudPlayer*) getPlayer;
 
 // old camera approach
--(void) setCamera: (CloudCamera*) camera;
+-(void) setCamera:(CloudCamera*) camera;
 -(CloudCamera*) getCamera;
 
-- (void) setScale:(TimelineScaleType)scale;
+- (void) setScale:(TimelineScaleType) scale;
 - (TimelineScaleType) getScale;
 
--(void) setRange: (int64_t) start_time end: (int64_t) end_time;
+-(void) setRange:(int64_t) start_time
+             end:(int64_t) end_time;
 -(void) unsetRange;
 
--(void) setPosition:(int64_t)time;
--(void) setTrackingMode:(BOOL)on;
--(void) setEnsureVisible:(bool)on;
+-(void) setPosition:(int64_t) time;
+-(void) setTrackingMode:(BOOL) on;
+-(void) setEnsureVisible:(bool) on;
 
--(void) setCalendarContainer:(UIView*)view;
+-(void) setCalendarContainer:(UIView*) view;
 -(UIView*) getCalendarContainer;
 
 // UI
 -(void) toggleCalendarControl;
--(void) toggleCalendarControl:(BOOL)on;
--(void) toggleScaleControl:(TimelineScaleType)scale;
+-(void) toggleCalendarControl:(BOOL) on;
+-(void) toggleScaleControl:(TimelineScaleType) scale;
 
 -(void) scrollTimelineToLeft;
 -(void) scrollTimelineToRight;

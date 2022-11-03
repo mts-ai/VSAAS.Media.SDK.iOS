@@ -20,7 +20,8 @@ typedef NS_ENUM(int, CloudMultiPlayerSDKViewScreenLayouts) {
 @protocol CloudMultiPlayerSDKViewDelegate<NSObject>
 
 @optional
--(int) OnPlayerTapped:(CloudPlayerSDKView*)player onIndex:(int)index;
+-(int) OnPlayerTapped:(CloudPlayerSDKView*) player
+              onIndex:(int) index;
 
 @end
 
@@ -36,17 +37,17 @@ typedef NS_ENUM(int, CloudMultiPlayerSDKViewScreenLayouts) {
 -(int) postLoad;
 
 // for events
--(void) setDelegate:(id<CloudMultiPlayerSDKViewDelegate>)delegate;
+-(void) setDelegate:(id<CloudMultiPlayerSDKViewDelegate>) delegate;
 -(id<CloudMultiPlayerSDKViewDelegate>) getDelegate;
 
 //
--(void) setScreenLayout:(CloudMultiPlayerSDKViewScreenLayouts)layout;
+-(void) setScreenLayout:(CloudMultiPlayerSDKViewScreenLayouts) layout;
 -(CloudMultiPlayerSDKViewScreenLayouts) getScreenLayout;
 
--(int) setSource:(NSString*)source
-         onIndex:(int)index
-         isLocal:(int)local;
--(int) removeSource:(int)index;
+-(int) setSource:(NSString*) source
+         onIndex:(int) index
+         isLocal:(int) local;
+-(int) removeSource:(int) index;
 -(int) removeAllSources;
 
 //-(CloudPlayerSDKView*) getCloudPlayerSDKView:(int)index;

@@ -1,5 +1,41 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.98.22113
+
+ CloudSDK
+Version 2.0.98_20221103:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20221103,
+- added new methods: getRecords, getTimelineThumbnails full, getClips with order by parameter
+- added first version of memory card API support
+- fixed default getClips method for support latest API changes
+- fixed possible stucks on the sync methods
+- a lot formatting
+
+ PlayerSDK
+Version 2.0.20221103:
+- fixed possible new xcode warning 
+
+ EncoderSDK
+Version 2.0.20221020:
+
+### MobileSDK 2.0.97.221020
+
+ CloudSDK
+Version 2.0.97_20221020:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20221020,
+  EncoderSDK: 2.0.20221020
+- removed deprecated platforms: armv7, armv7s, i386
+
+ PlayerSDK
+Version 2.0.20221020:
+- removed deprecated platforms: armv7, armv7s, i386
+
+ EncoderSDK
+Version 2.0.20221020:
+- removed deprecated platforms: armv7, armv7s, i386
+
 ### MobileSDK 2.0.96.221005
 
  CloudSDK
