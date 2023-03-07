@@ -1,5 +1,21 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.100.230307
+
+ CloudSDK
+Version 2.0.100_20230307:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230307,
+  EncoderSDK: 2.0.20230307
+
+ PlayerSDK
+Version 2.0.20230307:
+- fixed digest auth for ffmpeg rtsp send command
+
+ EncoderSDK
+Version 2.0.20230307:
+- fixed digest auth for ffmpeg rtsp send command
+
 ### MobileSDK 2.0.99.221128
 
  CloudSDK
@@ -12,7 +28,6 @@ Version 2.0.99_20221128:
 Version 2.0.20221128:
 - fixed video renderer in one frame mode
 - updated license list
-
 
  EncoderSDK
 Version 2.0.20221128:
