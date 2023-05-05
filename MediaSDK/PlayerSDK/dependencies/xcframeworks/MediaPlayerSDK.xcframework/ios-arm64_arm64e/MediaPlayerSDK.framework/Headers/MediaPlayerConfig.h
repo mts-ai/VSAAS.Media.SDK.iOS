@@ -128,7 +128,6 @@
 
 @property (nonatomic) int       useNotchFilter;                 // Notch Filter enabling
 
-@property (nonatomic) int       fastDetect;                     // Fast Detect
 @property (nonatomic) int       skipUntilKeyFrame;              // Skip frames until key frame comes on start streaming
 
 @property (nonatomic) int       sendKeepAlive;                  // 0, 1, default: 1 - send "keep-alive" in http header
@@ -178,18 +177,27 @@
 @property (nonatomic) NSString* timeshiftOutputUrl;
 
 // Advanced settings for previuos sections
-@property (nonatomic) int       advancedConnectionNetworkProtocolBufferSize;  // should be > 0 but less 100000000, in bytes, default -1
-@property (nonatomic) int       advancedConnectionNetworkProtocolPacketSize;  // should be > 0 but less 100000000, in bytes, default -1
+@property (nonatomic) int       advancedConnectionNetworkProtocolBufferSize;  // should be > 0 but less 100000000, in bytes. Default:  -1
+@property (nonatomic) int       advancedConnectionNetworkProtocolPacketSize;  // should be > 0 but less 100000000, in bytes. Default:  -1
+@property (nonatomic) int       advancedSourceInitWithFastStreamDetection;    // Use minimal buffers count for stream info detection.
+                                                                              // 0 - off, 1 - on. Default: 0
+@property (nonatomic) int       advancedSourceInitWithLowLatency;             // All received buffers will flushed after we parsed stream info. It will affected on
+                                                                              // fast start playing, because we will wait next key frame at least.
+                                                                              // 0 - off, 1 - on, -1 - enabled when detection time <= 100 ms
+                                                                              // Default: 0
 @property (nonatomic) int       advancedSourceAsyncGetPacket;                 // 0 - off, 1 - for all, 2 - for non interruptable protocols
-@property (nonatomic) int       advancedSourceUseAsyncGetAddrInfo;            // 0 - off, 1 - on, default 1
+@property (nonatomic) int       advancedSourceUseAsyncGetAddrInfo;            // 0 - off, 1 - on. Default: 1
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMin; // min frame count in queue after decoder
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMax; // max frame count in queue after decoder
 
+@property (nonatomic) int       advancedSourceOptionTcpNoDelay;               // tcp_nodelay option, Use TCP_NODELAY to disable nagle's algorithm. Default: 0
+@property (nonatomic) int       advancedSourceOptionAnalyzeDuration;          // analyzeduration option, specify how many microseconds are analyzed to probe the input. Default: 5000000
 @property (nonatomic) int       advancedSourceOptionProbeSize;                // probesize option, for min start delay: 500000 bytes
 @property (nonatomic) int       advancedSourceOptionFpsProbeSize;             // fpsprobesize option, for min start delay: 1 frame
 @property (nonatomic) int       advancedSourceOptionFormatProbeSize;          // formatprobesize option, for min start delay: 2048 bytes
 @property (nonatomic) int       advancedSourceOptionMaxProbePackets;          // max_probe_packets option, for min start delay: 256 packets
 @property (nonatomic) int       advancedSourceOptionHlsLiveStartIndex;        // hls live_start_index option, for min latency: -1
+@property (nonatomic) int       advancedSourceOptionHlsReloadPlaylistInterval;// Custom reload interval in the seconds for periodic update playlist: -1
 @property (nonatomic) int       advancedSourceOptionRtmpBuffer;               // rtmp_buffer option, for min latency: 500 ms
 @property (nonatomic) NSString* advancedSourceOptionRtmpLive;                 // rtmp_live option, possible values: "any", "live", "recorded"
 @property (nonatomic) NSString* advancedSourceOptionHttpReconnectOnHttpError; // reconnect on error from string with codes separated by ",". For example: "404,405"
@@ -199,9 +207,11 @@
                                                                       // Advanced: 0x80 - continues double taps switched aspects between 100% <-> last zoom/moved
                                                                       // Default:  (0x01 | 0x02 | 0x04 | 0x08 | 0x80)
 @property (nonatomic) int        stateWillResignActive;               // 0 - continue playing, 1 - pause, 2 - pause and flush, 3 - pause and continue buffering. Default: 1
-@property (nonatomic) int        runDisplayLinkInMainQueue;           // 1 - run as is, 1 - force main queue. Default: 1
+@property (nonatomic) int        runDisplayLinkInMainQueue;           // 0 - run as is, 1 - force main queue. Default: 1
+@property (nonatomic) int        qualityOfService;                    // NSQualityOfService. Default: NSQualityOfServiceUserInteractive
 @property (nonatomic) int        enableInternalAutoresizeToSuperview; // 0 - off, 1 - on. Default: 1
 @property (nonatomic) int        enableInternalAudioSessionConfigure; // 0 - don't touch AudioSession, 1 - own configure. Default: 1
+
 // for customize our audio session
 @property (nonatomic) NSString*  internalAudioSessionMode;            // values from AVAudioSessionMode. Default: @"AVAudioSessionModeDefault"
 @property (nonatomic) NSString*  internalAudioSessionCategory;        // values from AVAudioSessionCategory. Default: @"AVAudioSessionCategoryPlayAndRecord"

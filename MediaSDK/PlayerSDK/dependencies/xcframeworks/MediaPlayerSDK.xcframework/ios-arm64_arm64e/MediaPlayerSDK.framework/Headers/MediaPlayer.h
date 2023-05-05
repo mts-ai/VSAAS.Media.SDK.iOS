@@ -66,7 +66,8 @@ typedef NS_ENUM(int, MediaPlayerNotifyCodes)
     CP_CONNECT_AUTH_FAILED          = 120,
 	
     CP_SOURCE_VIDEO_STREAMINFO_NOT_COMPLETE = 121,
-
+    CP_ERROR_DATA_IO                = 125,
+    
 	VDP_STOPPED                     = 201,
 	VDP_INIT_FAILED                 = 202,
     VDP_LASTFRAME                   = 203,

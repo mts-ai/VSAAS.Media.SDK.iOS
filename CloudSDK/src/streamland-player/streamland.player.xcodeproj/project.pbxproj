@@ -369,7 +369,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../dependencies/libraries/include",
-					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e_armv7_armv7s/cloudsdk.framework/Headers",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e/cloudsdk.framework/Headers",
 				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -401,7 +401,7 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../dependencies/libraries/include",
-					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e_armv7_armv7s/cloudsdk.framework/Headers",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e/cloudsdk.framework/Headers",
 				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

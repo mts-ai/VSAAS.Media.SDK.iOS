@@ -1,5 +1,49 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.102.230505
+
+ CloudSDK
+Version 2.0.102_20230505:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230505,
+  EncoderSDK: 2.0.20230505
+- added new method setSource with the ability to set a live url 
+- improved live stream opening speed
+- added new advanced config settings for tune low latency and fast detection stream functionality:
+  *AdvancedOptionInitWithFastStreamDetection, 
+  *AdvancedOptionInitWithLowLatency, 
+  *AdvancedOptionTcpNoDelay,
+  *AdvancedOptionAnalyzeDuration, 
+  *AdvancedOptionHlsReloadPlaylistInterval
+- added new advanced config settings for auto reconnect after data io error occurred:
+  *EnableReconnectOnErrorDataIO
+- fixed isMute method
+- removed setVolume and getVolume methods
+- fixed quality of service thread issues
+- fixed double play issue
+- fixed log levels problems
+
+ PlayerSDK
+Version 2.0.20230505:
+- migrated to FFMPEG version 6.0.0
+- added new low latency functionality
+- improved stream fast detection functionality
+- added new data IO error support:
+  CP_ERROR_DATA_IO
+- added new advanced config settings for tune low latency and fast detection stream functionality:
+  advancedSourceOptionTcpNoDelay, 
+  advancedSourceOptionAnalyzeDuration, 
+  advancedSourceOptionHlsReloadPlaylistInterval,
+  advancedSourceInitWithFastStreamDetection, 
+  advancedSourceInitWithLowLatency.
+- fixed possible crash on close
+- fixed quality of service thread issues
+
+ EncoderSDK
+Version 2.0.20230505:
+- migrated to FFMPEG version 6.0.0
+- fixed quality of service thread issues
+
 ### MobileSDK 2.0.101.230320
 
  CloudSDK

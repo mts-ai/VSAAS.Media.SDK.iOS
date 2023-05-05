@@ -9,21 +9,21 @@
 #define  CSDK_LOG_LEVEL_MEMDUMP	9
 #define  CSDK_LOG_LEVEL_COUNT	10
 
-#define CSDK_LOG_LEVEL			CSDK_LOG_LEVEL_LOG
+#define CSDK_LOG_LEVEL			CSDK_LOG_LEVEL_ERROR
 
-extern int CSDK_LogLevel;
+//extern int CSDK_LogLevel;
 
-#define CSDK_LOG_TAG(level, TAG, fmt, ...)  \
-    if (level <= CSDK_LogLevel)             \
-    {                                       \
+#define CSDK_LOG_TAG(level, TAG, fmt, ...)      \
+    if (level <= [CloudHelpers CSDK_LogLevel])  \
+    {                                           \
         NSLog(@"%@: %@", TAG, [NSString stringWithFormat:fmt, ##__VA_ARGS__]);     \
-    }                                       \
+    }                                           \
 
-#define CSDK_LOG(level, fmt, ...)           \
-    if (level <= CSDK_LogLevel)             \
-    {                                       \
+#define CSDK_LOG(level, fmt, ...)               \
+    if (level <= [CloudHelpers CSDK_LogLevel])  \
+    {                                           \
         NSLog(@"%@", [NSString stringWithFormat:fmt, ##__VA_ARGS__]);     \
-    }                                       \
+    }                                           \
 
 @interface ParamsPair: NSObject
 
@@ -40,6 +40,7 @@ extern int CSDK_LogLevel;
 @end
 
 @interface CloudHelpers : NSObject
+
 +(long long) currentTimestampUTC;
 +(long long) parseUTCtime: (NSString*) time;
 +(NSString*) formatTime: (long long)utc;
@@ -65,6 +66,9 @@ extern int CSDK_LogLevel;
 +(long long) cameraIdByToken: (NSString*) token;
 
 +(void) runOnMainQueue:(void (^)(void)) block;
+
++(int) CSDK_LogLevel;
++(void) CSDK_LogLevel:(int) value;
 
 @end
 

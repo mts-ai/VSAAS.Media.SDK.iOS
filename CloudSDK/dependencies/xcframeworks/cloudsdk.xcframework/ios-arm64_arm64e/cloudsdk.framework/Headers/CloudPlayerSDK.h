@@ -187,11 +187,26 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setPlaybackMode:(CPlayerPlaybackModes) type;
 -(CPlayerPlaybackModes) getPlaybackMode;
 
+-(void) setEnableReconnectOnErrorDataIO:(int) enable;
+-(int) getEnableReconnectOnErrorDataIO;
+
 -(void) setWorkaroundForceLiveUrlTypeForTokenWithPath:(CPlayerLiveUrlType) type;
 -(CPlayerLiveUrlType) getWorkaroundForceLiveUrlTypeForTokenWithPath;
 
 -(void) setWorkaroundWaitWhileRecordsUploaded:(int) valueInMs;
 -(int) getWorkaroundWaitWhileRecordsUploaded;
+
+-(void) setAdvancedOptionInitWithFastStreamDetection:(int) enable;
+-(int) getAdvancedOptionInitWithFastStreamDetection;
+
+-(void) setAdvancedOptionInitWithLowLatency:(int) enable;
+-(int) getAdvancedOptionInitWithLowLatency;
+
+-(void) setAdvancedOptionTcpNoDelay:(int) enable;
+-(int) getAdvancedOptionTcpNoDelay;
+
+-(void) setAdvancedOptionAnalyzeDuration:(int) valueInMs;
+-(int) getAdvancedOptionAnalyzeDuration;
 
 -(void) setAdvancedOptionProbeSize:(int) size;
 -(int) getAdvancedOptionProbeSize;
@@ -204,6 +219,9 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(void) setAdvancedOptionMaxProbePackets:(int) packets;
 -(int) getAdvancedOptionMaxProbePackets;
+
+-(void) setAdvancedOptionHlsReloadPlaylistInterval:(int) valueInSec;
+-(int) getAdvancedOptionHlsReloadPlaylistInterval;
 
 -(void) setAdvancedOptionHlsLiveStartIndex:(int) index;
 -(int) getAdvancedOptionHlsLiveStartIndex;
@@ -278,12 +296,16 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setDelegate:(id<CloudPlayerSDKDelegate>) delegate;
 -(id<CloudPlayerSDKDelegate>) getDelegate;
 
--(int) setSource:(NSString*) source;
--(int) setSource:(NSString*) source
+-(int) setSource:(NSString* _Nullable) source;
+-(int) setSource:(NSString* _Nullable) source
     withPosition:(long long) position;
+-(int) setSource:(NSString* _Nullable) source
+    withPosition:(long long) position
+     withLiveUrl:(NSString* _Nullable (^ _Nullable)(CPlayerLiveUrlType type)) liveProvider // if not nil, return url according requested live url type
+ withBackwardUrl:(NSString* _Nullable (^ _Nullable)(void)) backwardProvider; // if not nil, return audio backward url
 
--(int) setConfig:(CPlayerConfig*) config;
--(CPlayerConfig*) getConfig;
+-(int) setConfig:(CPlayerConfig* _Nonnull) config;
+-(CPlayerConfig* _Nullable) getConfig;
 
 -(void) play;
 -(void) pause;
@@ -297,57 +319,55 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(long long) getPosition;
 -(Boolean) isLive;
 
--(void) mute:(Boolean) bMmute;
+-(void) mute:(Boolean) bMute;
 -(Boolean) isMute;
--(void) setVolume:(int) vol;
--(int) getVolume;
 
 -(void) showTimeline:(UIView*) vwTimeline;
 -(void) showTimeline:(UIView*) timelineContainer withCalendarContainer:(UIView*) calendarContainer;
 -(CTimelineConfig*) getTimelineConfig;
 -(void) applyTimelineConfig;
--(void) setTimelineStyle:(UIColor*) main
-               lineColor:(UIColor*) line
-               textColor:(UIColor*) text
-     textBackgroundColor:(UIColor*) textBackground
-              trackColor:(UIColor*) track
-               knobColor:(UIColor*) knob
-             strokeColor:(UIColor*) stroke
-              rangeColor:(UIColor*) range;
--(void) setTimelineStyle:(CTimelineStyle*) style;
--(CTimelineStyle*) getTimelineStyle;
+-(void) setTimelineStyle:(UIColor* _Nonnull) main
+               lineColor:(UIColor* _Nonnull) line
+               textColor:(UIColor* _Nonnull) text
+     textBackgroundColor:(UIColor* _Nonnull) textBackground
+              trackColor:(UIColor* _Nonnull) track
+               knobColor:(UIColor* _Nonnull) knob
+             strokeColor:(UIColor* _Nonnull) stroke
+              rangeColor:(UIColor* _Nonnull) range;
+-(void) setTimelineStyle:(CTimelineStyle* _Nonnull) style;
+-(CTimelineStyle*_Nonnull) getTimelineStyle;
 -(void) setTimelineScale:(CTimelineScaleType) scale;
 -(CTimelineScaleType) getTimelineScale;
 
 -(void) setRange:(int64_t) start_time
         end_time:(int64_t) end_time;
--(void) getRange:(int64_t*) start_time
-        end_time:(int64_t*) end_time;
+-(void) getRange:(int64_t* _Nonnull) start_time
+        end_time:(int64_t* _Nonnull) end_time;
 -(void) unsetRange;
 -(void) hideTimeline;
 
 -(long long) getID;
 
 -(NSString*) getPreviewURLSync;
--(void) getPreviewURL:(void (^)(NSObject* obj, int status)) complete;
+-(void) getPreviewURL:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(CPreviewImage*) getPreviewImageSync;
--(void) getPreviewImage:(void (^)(NSObject*, int)) complete;
+-(void) getPreviewImage:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
--(int) getVideoShot:(void*) buffer
-        buffer_size:(int32_t*) buffer_size
-              width:(int32_t*) width
-             height:(int32_t*) height
-      bytes_per_row:(int32_t*) bytes_per_row;
-- (int) getViewSizesAndVideoAspects:(int32_t*) view_orientation
-                         view_width:(int32_t*) view_width
-                        view_height:(int32_t*) view_height
-                        video_width:(int32_t*) video_width
-                       video_height:(int32_t*) video_height
-                        aspect_left:(int32_t*) aspect_left
-                         aspect_top:(int32_t*) aspect_top
-                       aspect_width:(int32_t*) aspect_width
-                      aspect_height:(int32_t*) aspect_height
-                        aspect_zoom:(int32_t*) aspect_zoom;
+-(int) getVideoShot:(void* _Nonnull) buffer
+        buffer_size:(int32_t* _Nonnull) buffer_size
+              width:(int32_t* _Nonnull) width
+             height:(int32_t* _Nonnull) height
+      bytes_per_row:(int32_t* _Nonnull) bytes_per_row;
+- (int) getViewSizesAndVideoAspects:(int32_t* _Nonnull) view_orientation
+                         view_width:(int32_t* _Nonnull) view_width
+                        view_height:(int32_t* _Nonnull) view_height
+                        video_width:(int32_t* _Nonnull) video_width
+                       video_height:(int32_t* _Nonnull) video_height
+                        aspect_left:(int32_t* _Nonnull) aspect_left
+                         aspect_top:(int32_t* _Nonnull) aspect_top
+                       aspect_width:(int32_t* _Nonnull) aspect_width
+                      aspect_height:(int32_t* _Nonnull) aspect_height
+                        aspect_zoom:(int32_t* _Nonnull) aspect_zoom;
 
 - (void) setFFRate:(int32_t) rate;
 - (void) updateView;
@@ -385,7 +405,7 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setPrivacyMode:(CCPrivacyMode) mode;
 
 -(NSString*) getBackwardUrl;
--(void) getLiveUrls:(void (^)(NSObject*, int)) complete;
+-(void) getLiveUrls:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 -(NSMutableArray<NSString*>*) getActivitySync:(Boolean) isCameraId
                                         start:(long long) start
@@ -403,7 +423,7 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
        daysincamtz:(NSNumber*) isDaysincamtz
              limit:(int) limit
             offset:(int) offset
-        onComplete:(void (^)(NSObject*, int)) complete;
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(NSMutableArray<NSString*>*) getCalendarSync:(long long) start
                                           end:(long long) end
                                         limit:(int) limit
@@ -414,20 +434,20 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
             order:(Boolean) isAscending
             limit:(long) limit
            offset:(long) offset
-       onComplete:(void (^)(NSObject *, int)) complete;
+       onComplete:(void (^ _Nonnull)(NSObject *, int)) complete;
 -(int) getRecords:(long long) start
               end:(long long) end
             order:(Boolean) isAscending
             limit:(long) limit
            offset:(long) offset
       isTempFiles:(NSNumber*) isTempFiles
-       onComplete:(void (^)(NSObject *, int)) complete;
+       onComplete:(void (^ _Nonnull)(NSObject *, int)) complete;
 
 -(int) getCalendar:(long long) start
                end:(long long) end
              limit:(int) limit
             offset:(int) offset
-        onComplete:(void (^)(NSObject*, int)) complete;
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 -(NSDictionary*) getImagesSync:(long long) start
                            end:(long long) end
@@ -439,20 +459,20 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
            limit:(uint) limit
           offset:(uint) offset
            order:(Boolean) is_ascending
-      onComplete:(void (^)(NSObject*, int)) complete;
+      onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 -(CTimeline*) getTimelineSync:(long long) start
                           end:(long long) end;
 -(int) getTimeline:(long long) start
                end:(long long) end
-        onComplete:(void (^)(NSObject*, int)) complete;
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(NSDictionary*) getTimelineThumbnailsSync:(long long) start
                                        end:(long long) end
                                      order:(Boolean) is_ascending;
 -(int) getTimelineThumbnails:(long long) start
                          end:(long long) end
                        order:(Boolean) is_ascending
-                  onComplete:(void (^)(NSObject*, int)) complete;
+                  onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(int) getTimelineThumbnails:(long long) start
                          end:(long long) end
                       origin:(NSString*) origin
@@ -460,7 +480,7 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
                        limit:(uint) limit
                       offset:(uint) offset
                        order:(Boolean) is_ascending
-                  onComplete:(void (^)(NSObject *, int)) complete;
+                  onComplete:(void (^ _Nonnull)(NSObject *, int)) complete;
 
 //events
 -(NSDictionary*) getEventsSync:(long long) start
@@ -475,15 +495,15 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
           offset:(long) offset
           events:(NSString*) events
            order:(Boolean) is_ascending
-      onComplete:(void (^)(NSObject*, int)) complete;
+      onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(int) getEvent:(long long) eventid
-     onComplete:(void (^)(NSObject*, int)) complete;
+     onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(void) triggerEvent:(NSString*) name
             withTime:(NSString*) time
             withMeta:(NSDictionary*) meta
-            complete:(void (^)(NSObject* obj, int status)) complete;
+            complete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(int) deleteEvent:(long long) eventid
-        onComplete:(void (^)(NSObject*, int)) complete;
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 //clips
 -(int) getClips:(long long) start
@@ -491,81 +511,81 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
           limit:(long) limit
          offset:(long) offset
           order:(Boolean) is_ascending
-     onComplete:(void (^)(NSObject*, int)) complete;
+     onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(int) getClips:(long long) start
             end:(long long) end
           limit:(long) limit
          offset:(long) offset
           order:(Boolean) is_ascending
         orderBy:(COrderByValue) orderValue
-     onComplete:(void (^)(NSObject*, int)) complete;
+     onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(int) createClip:(NSString*) title
             start:(long long) start
               end:(long long) end
          deleteAt:(long long) delete_at
-       onComplete:(void (^)(NSObject*, int)) complete ;
+       onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete ;
 -(int) getClip:(long long) clipid
-    onComplete:(void (^)(NSObject*, int)) complete ;
+    onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete ;
 -(int) deleteClip:(long long) clipid
-       onComplete:(void (^)(NSObject*, int)) complete;
+       onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 //ptz
--(void) getPTZ:(void (^)(NSObject*, int)) complete;
+-(void) getPTZ:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(void) executePTZ:(NSString*) action
            timeout:(NSNumber*) timeout
-        onComplete:(void (^)(NSObject*, int)) complete;
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 //settings
--(void) getStreams:(void (^)(NSObject* obj, int status)) complete;
+-(void) getStreams:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) getVideoStreamByVsid:(NSString*) vsid
-                    callback:(void (^)(NSObject* obj, int status)) complete;
+                    callback:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) updateVideoStreamByVsid:(NSString*) vsid
                resolution_width:(uint32_t) rwidth
               resolution_height:(uint32_t) rheight
                             fps:(float) fps
                             gop:(uint32_t) gop
-                       complete:(void (^)(NSObject* obj, int status)) complete;
--(void) getCameraVideoSettings:(void (^)(NSObject* obj, int status)) complete;
+                       complete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
+-(void) getCameraVideoSettings:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) updateCameraVideoSettings:(NSDictionary*) vsettings
-                         complete: (void (^)(NSObject* obj, int status)) complete;
--(void) getCameraOSD:(void (^)(NSObject* obj, int status)) complete;
+                         complete: (void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
+-(void) getCameraOSD:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) updateCameraOSD:(NSDictionary*) osdsettings
-               complete: (void (^)(NSObject* obj, int status)) complete;
--(void) getCameraMotionDetection:(void (^)(NSObject* obj, int status)) complete;
+               complete: (void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
+-(void) getCameraMotionDetection:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) updateCameraMotionDetection:(NSDictionary*) settings
-                           complete:(void (^)(NSObject* obj, int status)) complete;
+                           complete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(void) updateCameraAudio:(NSDictionary*) settings
-                 complete:(void (^)(NSObject* obj, int status)) complete;
--(void) getCameraAudio:(void (^)(NSObject* obj, int status)) complete;
+                 complete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
+-(void) getCameraAudio:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 
 //wifi settings
 -(void) getCameraWifiListLimit:(unsigned int) limit
                         offset:(unsigned int) offset
-                      callback:(void (^)(NSObject* obj, int status)) complete ;
--(void) updateCameraWifiList:(void (^)(NSObject* obj, int status)) complete ;
--(void) getCameraSelectedWifi:(void (^)(NSObject* obj, int status)) complete ;
+                      callback:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete ;
+-(void) updateCameraWifiList:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete ;
+-(void) getCameraSelectedWifi:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete ;
 -(void) setCameraSelectedWifi:(NSDictionary*) wifiInfo
-                     callback:(void (^)(NSObject* obj, int status)) complete ;
+                     callback:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete ;
 
 // memory card
--(int) getMemoryCardInfo:(void (^)(NSObject* obj, int status)) complete;
+-(int) getMemoryCardInfo:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(int) getMemoryCardTimeline:(long long) start
                          end:(long long) end
                 pollingDelay:(int) delayInMs
                isInterrupted:(Boolean (^)(void)) isInterrupted
                onRequestedId:(void (^)(NSString* rid)) requestedId
-             onPendingStatus:(void (^)(NSObject* obj, int status)) pendingStatus
-                  onComplete:(void (^)(NSObject* obj, int status)) complete;
+             onPendingStatus:(void (^)(NSObject* _Nullable obj, int status)) pendingStatus
+                  onComplete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(int) synchronizeMemoryCard:(long long) start
                          end:(long long) end
                 pollingDelay:(int) delayInMs
                isInterrupted:(Boolean (^)(void)) isInterrupted
                onRequestedId:(void (^)(NSString* rid)) requestedId
-             onPendingStatus:(void (^)(NSObject* obj, int status)) pendingStatus
-       onSegmentSynchronized:(void (^)(NSObject* obj, int status)) segmentSynchronized
-                  onComplete:(void (^)(NSObject* obj, int status)) complete;
+             onPendingStatus:(void (^)(NSObject* _Nullable obj, int status)) pendingStatus
+       onSegmentSynchronized:(void (^)(NSObject* _Nullable obj, int status)) segmentSynchronized
+                  onComplete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 -(int) cancelSynchronizeMemoryCard:(NSString*) rid
-                        onComplete:(void (^)(NSObject* obj, int status)) complete;
+                        onComplete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 
 -(void) setLngLtdBounds:(double) latitude
                        :(double) longitude;
@@ -580,8 +600,8 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(int) refreshSync;
 -(int) saveSync;
--(int) refresh: (void (^)(NSObject* obj, int status)) complete;
--(int) save: (void (^)(NSObject* obj, int status)) complete;
+-(int) refresh: (void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
+-(int) save: (void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 
 -(int) GetStatusCallbackLastParam;
 
