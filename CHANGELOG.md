@@ -1,5 +1,36 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.103.230606
+
+ CloudSDK
+Version 2.0.103_20230606:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230606,
+  EncoderSDK: 2.0.20230606
+- added asynchrony for methods setSource, setPosition and Play
+- improved getPosition method accuracy
+- improved data IO error handling
+- added new advanced config settings for new features:
+  *InternalWillResignActiveMode,
+  *WorkaroundRemoveBackwardJumpsForGetPosition,
+  *AdvancedSourcePtsModifyMode,
+  *AdvancedOptionReconnectDelayStep
+
+ PlayerSDK
+Version 2.0.20230606:
+- improved getaddrinfo async version on the ffmpeg level
+- added http reconnect delay step setting on the ffmpeg level
+- removed jumps back for get stream and renderer position methods after changing position
+- corrected data flush after successful position change
+- improved data IO error handling
+- added new advanced config settings for new features:
+  advancedSourcePtsModifyMode
+  advancedSourceOptionHttpReconnectDelayStep
+  workaroundRemoveBackwardJumpsForGetPosition
+
+ EncoderSDK
+Version 2.0.20230606:
+
 ### MobileSDK 2.0.102.230505
 
  CloudSDK

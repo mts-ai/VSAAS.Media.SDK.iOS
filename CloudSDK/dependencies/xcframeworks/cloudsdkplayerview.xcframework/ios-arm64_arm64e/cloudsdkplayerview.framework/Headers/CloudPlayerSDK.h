@@ -165,6 +165,8 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(NSUInteger) getInternalAudioSessionCategoryOptions;
 -(void) setEnableInternalAudioUnitVPIO:(int) enable;
 -(int) getEnableInternalAudioUnitVPIO;
+-(void) setInternalWillResignActiveMode:(int) mode;
+-(int) getInternalWillResignActiveMode;
 
 -(void) setLatencyPreset:(int) preset;
 -(int) getLatencyPreset;
@@ -195,6 +197,12 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(void) setWorkaroundWaitWhileRecordsUploaded:(int) valueInMs;
 -(int) getWorkaroundWaitWhileRecordsUploaded;
+
+-(void) setWorkaroundRemoveBackwardJumpsForGetPosition:(int) enable;
+-(int) getWorkaroundRemoveBackwardJumpsForGetPosition;
+
+-(void) setAdvancedSourcePtsModifyMode:(int) mode;
+-(int) getAdvancedSourcePtsModifyMode;
 
 -(void) setAdvancedOptionInitWithFastStreamDetection:(int) enable;
 -(int) getAdvancedOptionInitWithFastStreamDetection;
@@ -316,6 +324,9 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(CPlayerModes) getPrefferedMode;
 
 -(void) setPosition:(long long) nPosition;
+-(void) setPosition:(long long) nPosition
+        onComplete:(void (^ _Nonnull)(int)) complete;
+
 -(long long) getPosition;
 -(Boolean) isLive;
 

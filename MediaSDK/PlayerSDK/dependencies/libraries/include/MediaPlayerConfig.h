@@ -187,6 +187,7 @@
                                                                               // Default: 0
 @property (nonatomic) int       advancedSourceAsyncGetPacket;                 // 0 - off, 1 - for all, 2 - for non interruptable protocols
 @property (nonatomic) int       advancedSourceUseAsyncGetAddrInfo;            // 0 - off, 1 - on. Default: 1
+@property (nonatomic) int       advancedSourcePtsModifyMode;                  // <=0 - off, 1 - video fisrt, started from 0 (Workaround for Meetviva camera). Default: 0
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMin; // min frame count in queue after decoder
 @property (nonatomic) int       advancedDecoderVideoHardwareReadyFrameQueueMax; // max frame count in queue after decoder
 
@@ -201,6 +202,7 @@
 @property (nonatomic) int       advancedSourceOptionRtmpBuffer;               // rtmp_buffer option, for min latency: 500 ms
 @property (nonatomic) NSString* advancedSourceOptionRtmpLive;                 // rtmp_live option, possible values: "any", "live", "recorded"
 @property (nonatomic) NSString* advancedSourceOptionHttpReconnectOnHttpError; // reconnect on error from string with codes separated by ",". For example: "404,405"
+@property (nonatomic) int       advancedSourceOptionHttpReconnectDelayStep;   // wait X ms before next try for reconnect on http error. Default: -1 (0, 1000, 3000, 7000...)
 
 // iOS specific
 @property (nonatomic) int        enableInternalGestureRecognizers;	  // Main:     0 - off, 0x01 - pinch(zoom), 0x02 - pan(move), 0x04 - single, 0x08 - double tap
@@ -243,6 +245,8 @@
                                                                           // we try get it form extradata directly. Default: 1
 @property (nonatomic) int        workaroundAACAudioSpecificConfigGenerateFromStreamInfo; // 1 - generate ASC config from stream params. Default: 0
 @property (nonatomic) int        workaroundRemoveUnrecognizedNALUs;       // 0 - off, 1 - on
+
+@property (nonatomic) int        workaroundRemoveBackwardJumpsForGetPosition;  // 0 - off, 1 - on. Default: 1
 
 // log level
 + (void)setLogLevel:(MediaPlayerLogLevel)newValue;
