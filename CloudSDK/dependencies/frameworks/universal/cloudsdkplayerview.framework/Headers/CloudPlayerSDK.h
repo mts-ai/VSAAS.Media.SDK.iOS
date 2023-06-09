@@ -97,6 +97,13 @@ typedef NS_ENUM(int, CPlayerLiveUrlType) {
     CPlayerLiveUrlTypeRTSP = 4
 };
 
+typedef NS_ENUM(int, CPlayerBackwardUrlType) {
+    CPlayerBackwardUrlTypeNone = 0,
+    CPlayerBackwardUrlTypeDefault = 1,
+    CPlayerBackwardUrlTypeRTMP = 2,
+    CPlayerBackwardUrlTypeRTMPS = 3
+};
+
 typedef NS_ENUM(int, CPlayerPlaybackModes) {
     CPlayerPlaybackModeCloud = 1 << 0,
     CPlayerPlaybackModeMemoryCard = 1 << 1
@@ -185,6 +192,9 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(void) setLiveUrlType:(CPlayerLiveUrlType) type;
 -(CPlayerLiveUrlType) getLiveUrlType;
+
+-(void) setBackwardUrlType:(CPlayerBackwardUrlType) type;
+-(CPlayerBackwardUrlType) getBackwardUrlType;
 
 -(void) setPlaybackMode:(CPlayerPlaybackModes) type;
 -(CPlayerPlaybackModes) getPlaybackMode;

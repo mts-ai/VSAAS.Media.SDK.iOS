@@ -1,5 +1,22 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.104.230609
+
+ CloudSDK
+Version 2.0.104_20230609:
+- updated versions of used SDK: 
+  EncoderSDK: 2.0.20230609
+- improved live and backward url request logic
+- added new config setting for backward url type:
+  *BackwardUrlType
+
+ PlayerSDK
+Version 2.0.20230606:
+
+ EncoderSDK
+Version 2.0.20230609:
+- fixed audio issues after migrating to FFMPEG version 6.0.0
+
 ### MobileSDK 2.0.103.230606
 
  CloudSDK
