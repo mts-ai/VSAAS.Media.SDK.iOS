@@ -359,17 +359,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37TMES8PKP;
+				DEVELOPMENT_TEAM = TM98MB69S4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal",
-					"$(PROJECT_DIR)/../../dependencies/frameworks/universal",
-					"$(PROJECT_DIR)/../../dependencies/xcframeworks",
-					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks",
+					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal/**",
+					"$(PROJECT_DIR)/../../dependencies/frameworks/universal/**",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/**",
+					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../dependencies/libraries/include",
 					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e/cloudsdk.framework/Headers",
+					"$(PROJECT_DIR)/../../../MediaSDK/EncoderSDK/dependencies/xcframeworks/MediaCaptureSDK.xcframework/ios-arm64_arm64e/MediaCaptureSDK.framework/Headers",
 				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -391,17 +392,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37TMES8PKP;
+				DEVELOPMENT_TEAM = TM98MB69S4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal",
-					"$(PROJECT_DIR)/../../dependencies/frameworks/universal",
-					"$(PROJECT_DIR)/../../dependencies/xcframeworks",
-					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks",
+					"$(PROJECT_DIR)/../../../Dependencies/frameworks/universal/**",
+					"$(PROJECT_DIR)/../../dependencies/frameworks/universal/**",
+					"$(PROJECT_DIR)/../../dependencies/xcframeworks/**",
+					"$(PROJECT_DIR)/../../../Dependencies/xcframeworks/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../dependencies/libraries/include",
 					"$(PROJECT_DIR)/../../dependencies/xcframeworks/cloudsdk.xcframework/ios-arm64_arm64e/cloudsdk.framework/Headers",
+					"$(PROJECT_DIR)/../../../MediaSDK/EncoderSDK/dependencies/xcframeworks/MediaCaptureSDK.xcframework/ios-arm64_arm64e/MediaCaptureSDK.framework/Headers",
 				);
 				INFOPLIST_FILE = streamland.player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

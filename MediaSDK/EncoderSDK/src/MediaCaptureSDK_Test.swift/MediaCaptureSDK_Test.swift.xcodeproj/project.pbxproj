@@ -321,7 +321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37TMES8PKP;
+				DEVELOPMENT_TEAM = TM98MB69S4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../../../Dependencies/frameworks/universal";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries/include";
@@ -346,7 +346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 37TMES8PKP;
+				DEVELOPMENT_TEAM = TM98MB69S4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../../../Dependencies/frameworks/universal";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../dependencies/libraries/include";

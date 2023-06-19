@@ -19,13 +19,19 @@
     __weak IBOutlet UIButton *openClose_btn;
     __weak IBOutlet UIButton *aspect_btn;
     __weak IBOutlet UIButton *record_btn;
+    __weak IBOutlet UIButton *microphone_btn;
     __weak IBOutlet UITextField *access_token_tf;
     __weak IBOutlet UILabel *error_lbl;
     
     CloudPlayerSDK* ccplayer;
     CPlayerConfig* conf;
 
+    MediaRecorder* audioCapture;
+    MediaCaptureConfig* audioCaptureConfig;
+
     Boolean isRecording;
+    Boolean isBackwardStreaming;
+    Boolean isMicrophoneMuted;
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -37,9 +43,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    CSDK_LogLevel = CSDK_LOG_LEVEL_ERROR;
+    //CSDK_LogLevel = CSDK_LOG_LEVEL_ERROR;
+    //VXG_CaptureSDK_LogLevel = LL_DEBUG;
+
     isRecording = false;
-    
+    isBackwardStreaming = false;
+
+    isMicrophoneMuted = true;
+    [microphone_btn setTitle: @"START BACKWARD AUDIO" forState: UIControlStateNormal];
+
     access_token_tf.delegate = self;
     
     // fill field with desired token value
@@ -49,6 +61,8 @@
     conf = [[CPlayerConfig alloc] init];
     [conf setConnectionDetectionTime:1000];
     [conf setConnectionBufferingTime:500];
+    [conf setLiveUrlType:CPlayerLiveUrlTypeRTMPS];
+    //[conf setEnableInternalAudioUnitVPIO:0];
     //[conf setLicenseKey:@"trial"]; //input license key if you have, otherwise playtime is limited to 2 minutes
     
     // setup record using config if you want auto start record
@@ -66,12 +80,15 @@
     //[conf setLocalRecordTrimPosStart:-1];
 
     [playPause_btn setEnabled: NO];
-    [aspect_btn  setEnabled: NO];
-    
+    [aspect_btn setEnabled: NO];
+    [microphone_btn setEnabled: NO];
+
     ccplayer = [[CloudPlayerSDK alloc] initWithParams: videoView config: conf callback:^( CloudPlayerEvent status_code, id<ICloudCObject> player) {
         switch (status_code) {
             case SOURCE_CHANGED: {
                 
+                [self setupAudioCapture];
+
                 NSDate* start = [NSDate dateWithTimeIntervalSinceNow: -12*60*60];
                 NSDate* end = [NSDate dateWithTimeIntervalSinceNow: 0];
                 
@@ -111,6 +128,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     error_lbl.text=@"";
                     [aspect_btn setEnabled: YES];
+                    [microphone_btn setEnabled: YES];
                 });
             } break;
             case STARTED: {
@@ -203,6 +221,63 @@
     return 0;
 }
 
+- (void) setupAudioCapture {
+    audioCaptureConfig = [[MediaCaptureConfig alloc] init];
+    [audioCaptureConfig setStreamType: STREAM_TYPE_RTMP_PUBLISH];
+
+    [audioCaptureConfig setAudioFormat: AUDIO_FORMAT_ALAW];
+    [audioCaptureConfig setVideoFormat: VIDEO_FORMAT_NONE];
+
+    //[audioCaptureConfig setAudioSamplingRate: 8000];
+    //[audioCaptureConfig setStreamerAudioMuxerInputBufferSize: 20];
+    //[audioCaptureConfig setStreamerMuxerReorderByPtsBufferSize:1 andStartReorderSize:0];
+    //[audioCaptureConfig setUseExternalAudioSource:NO];
+    
+    audioCapture = [[MediaRecorder alloc] init];
+    [audioCapture Open:audioCaptureConfig callback:self];
+}
+
+- (int) Status:(NSString *)who :(int)arg {
+    switch (arg) {
+        case MUXREC_OPENED:
+        case MUXREC_STARTED:
+        case MUXREC_STOPED:
+        case MUXREC_CLOSED:
+            break;
+        case MUXRTSP_STARTED: // streaming started
+        case MUXRTMP_STARTED: {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                isBackwardStreaming = true;
+                [microphone_btn setEnabled: isBackwardStreaming];
+            });
+            break;
+        }
+        case MUXRTSP_STOPED: // streaming started
+        case MUXRTMP_STOPED: {
+            break;
+        }
+        case MUXRTSP_CLOSED:
+        case MUXRTMP_CLOSED:
+        case CAPTURE_VIDEO_STARTED:
+            break;
+        case CAPTURE_AUDIO_STARTED: {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            });
+            break;
+        }
+        case CAPTURE_VIDEO_STOPED:
+        case CAPTURE_AUDIO_STOPED:
+        case CAPTURE_VIDEO_OPENED:
+        case CAPTURE_AUDIO_OPENED:
+        case CAPTURE_AUDIO_CLOSED:
+        case CAPTURE_VIDEO_CLOSED:
+            break;
+    }
+    
+    return 0;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -223,6 +298,7 @@
             [self presentViewController:alert animated:YES completion: nil];
         }
     } else {
+        [audioCapture Close];
         [ccplayer close];
     }
 }
@@ -285,5 +361,30 @@
         [ccplayer localRecordStart];
     }
 }
+
+- (IBAction)MicBtn_click:(UIButton *)sender {
+    if (!isBackwardStreaming) {
+        [microphone_btn setEnabled: NO];
+        [audioCapture MuteMicrophone:isMicrophoneMuted];
+        [self startStreaming:[ccplayer getBackwardUrl]];
+    } else {
+        isMicrophoneMuted = !isMicrophoneMuted;
+    }
+    
+    [audioCapture MuteMicrophone:isMicrophoneMuted];
+    [microphone_btn setTitle: (isMicrophoneMuted ? @"MIC OFF" : @"MIC ON") forState: UIControlStateNormal];
+}
+
+- (void) startStreaming:(NSString*) rtmpUrl {
+    if (rtmpUrl != nil && rtmpUrl.length > 0) {
+        [audioCaptureConfig setRTMPurl:rtmpUrl];
+    }
+    [audioCapture StartStreaming];
+}
+
+- (void) stopStreaming {
+    [audioCapture StopStreaming];
+}
+
 
 @end

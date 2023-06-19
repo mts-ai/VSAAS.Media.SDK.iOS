@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 #import "CloudPlayerSDK.h"
+#import "MediaCaptureSDK.h"
 #import "CloudUtils.h"
 
-@interface ViewController : UIViewController<UITextFieldDelegate, CloudPlayerSDKDelegate>
+@interface ViewController : UIViewController<UITextFieldDelegate, CloudPlayerSDKDelegate, MediaCaptureCallback>
 
 
 @end
