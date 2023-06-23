@@ -171,6 +171,10 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
 -(int) setSource:(NSString*) source;
 -(int) setSource:(NSString*) source
     withPosition:(long long) position;
+-(int) setSource:(NSString* _Nullable) source
+    withPosition:(long long) position
+     withLiveUrl:(NSString* _Nullable (^ _Nullable)(CPlayerLiveUrlType type)) liveProvider // if not nil, return url according requested live url type
+ withBackwardUrl:(NSString* _Nullable (^ _Nullable)(void)) backwardProvider; // if not nil, return audio backward url
 -(void) close;
 
 -(void) play;

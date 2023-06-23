@@ -1,5 +1,23 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.105.230623
+
+ CloudSDK
+Version 2.0.105_20230623:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230623,
+  EncoderSDK: 2.0.20230623
+- fixed rare issues with opening after calling the сlose method
+- fixed possible memory leaks and crashes
+
+ PlayerSDK
+Version 2.0.20230623:
+- improved AVAudioSession data handler
+
+ EncoderSDK
+Version 2.0.20230623:
+- fixed thread issue with AVCaptureSession
+
 ### MobileSDK 2.0.104.230609
 
  CloudSDK
