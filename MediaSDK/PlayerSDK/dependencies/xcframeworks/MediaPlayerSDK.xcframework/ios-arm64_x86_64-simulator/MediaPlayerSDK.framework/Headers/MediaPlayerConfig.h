@@ -247,6 +247,7 @@
 @property (nonatomic) int        workaroundRemoveUnrecognizedNALUs;       // 0 - off, 1 - on
 
 @property (nonatomic) int        workaroundRemoveBackwardJumpsForGetPosition;  // 0 - off, 1 - on. Default: 1
+@property (nonatomic) int        workaroundRemoveBackwardDiscontinuityForGetData;
 
 // log level
 + (void)setLogLevel:(MediaPlayerLogLevel)newValue;

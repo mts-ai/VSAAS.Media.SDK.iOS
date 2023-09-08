@@ -109,6 +109,7 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
 
 -(int) OnConnected;
 -(int) OnVideoFirstFrame;
+-(int) VideoOutputFormatChanged;
 -(int) OnRecordStarted;
 -(int) OnRecordStopped:(NSString*) path;
 -(int) OnRecordClosed:(int) errcode;

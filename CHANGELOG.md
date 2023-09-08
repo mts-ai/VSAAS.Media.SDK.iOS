@@ -1,5 +1,49 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.108.230908
+
+CloudSDK
+Version 2.0.108_20230908:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230908
+  EncoderSDK: 2.0.20230908
+
+PlayerSDK
+Version 2.0.20230908:
+- improved hwaccel support in ffmpeg decoder
+
+EncoderSDK
+Version 2.0.20230908:
+
+FFMPEG:
+Version 6.0.0:
+- added mediacodec support
+- fixed mediacodec dynamic change format issue
+
+### MobileSDK 2.0.107.230907
+
+CloudSDK
+Version 2.0.107_20230907:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20230907
+- added possiblity reconnect on the video output format changed notify
+- added new advanced config settings:
+  reconnectOnVideoOutputFormatChanged
+  workaroundRemoveBackwardDiscontinuityForGetData
+- traget iOS SDK now 11.0  
+
+PlayerSDK
+Version 2.0.20230907:
+- added support for dynamic change of video stream resolution
+- added support for restarting pts video and audio streams
+- added notify VDP_OUTPUT_FORMAT_CHANGED
+- added new advanced config settings for restarting pts functionality:
+  workaroundRemoveBackwardDiscontinuityForGetData
+- added HWACCEL decoding support
+
+EncoderSDK
+Version 2.0.20230629:
+
 ### MobileSDK 2.0.106.230629
 
  CloudSDK

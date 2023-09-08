@@ -27,6 +27,7 @@ typedef NS_ENUM(int, CloudPlayerEvent) {
     SEEK_COMPLETED = 17,
     SEEK_FAILED = 18,
     SEEK_STARTED = 19,
+    VIDEO_OUTPUT_FORMAT_CHANGED = 21,
     ERROR = 105,
     SOURCE_CHANGED  = 3000,
     POSITION_JUMPED = 3001,
@@ -201,6 +202,9 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(void) setEnableReconnectOnErrorDataIO:(int) enable;
 -(int) getEnableReconnectOnErrorDataIO;
+
+-(void) setEnableReconnectOnVideoOutputFormatChanged:(int) enable;
+-(int) getEnableReconnectOnVideoOutputFormatChanged;
 
 -(void) setWorkaroundForceLiveUrlTypeForTokenWithPath:(CPlayerLiveUrlType) type;
 -(CPlayerLiveUrlType) getWorkaroundForceLiveUrlTypeForTokenWithPath;

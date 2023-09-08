@@ -72,6 +72,7 @@ typedef NS_ENUM(int, MediaPlayerNotifyCodes)
 	VDP_INIT_FAILED                 = 202,
     VDP_LASTFRAME                   = 203,
 	VDP_CRASH                       = 206,
+    VDP_OUTPUT_FORMAT_CHANGED       = 208,
     
 	VRP_STOPPED                     = 300,
 	VRP_INIT_FAILED                 = 301,
