@@ -1,5 +1,36 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.110.231006
+
+CloudSDK
+Version 2.0.110_20231006:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231004
+  EncoderSDK: 2.0.20231006
+
+PlayerSDK
+Version 2.0.20231004:
+- migrated on the ffmpeg based VPS/SPS/PPS parsing
+- fixed possible crashes on some broken streams
+
+EncoderSDK
+Version 2.0.20231006:
+- refactored close functionality
+- improved closing speed
+
+### MobileSDK 2.0.109.230921
+
+CloudSDK
+Version 2.0.109_20230921:
+- fixed wait upload records functionality for playback
+- fixed syncronization issues for setPosition
+
+PlayerSDK
+Version 2.0.20230908:
+
+EncoderSDK
+Version 2.0.20230908:
+
 ### MobileSDK 2.0.108.230908
 
 CloudSDK
@@ -30,7 +61,7 @@ Version 2.0.107_20230907:
 - added new advanced config settings:
   reconnectOnVideoOutputFormatChanged
   workaroundRemoveBackwardDiscontinuityForGetData
-- traget iOS SDK now 11.0  
+- target iOS SDK now 11.0  
 
 PlayerSDK
 Version 2.0.20230907:
