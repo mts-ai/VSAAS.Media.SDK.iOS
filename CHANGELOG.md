@@ -1,5 +1,19 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.111.231011
+
+CloudSDK
+Version 2.0.111_20231011:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231011
+
+PlayerSDK
+Version 2.0.20231011:
+- fixed memory leak in the HW decoder implementation
+
+EncoderSDK
+Version 2.0.20231006:
+
 ### MobileSDK 2.0.110.231006
 
 CloudSDK
