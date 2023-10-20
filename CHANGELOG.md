@@ -1,5 +1,20 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.112.231019
+
+CloudSDK
+Version 2.0.112_20231019:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231019
+  EncoderSDK: 2.0.20231019
+
+PlayerSDK
+Version 2.0.20231019:
+- fixed possible double notification when starting recording
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.111.231011
 
 CloudSDK
