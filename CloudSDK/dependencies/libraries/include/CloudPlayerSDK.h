@@ -215,6 +215,9 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setWorkaroundRemoveBackwardJumpsForGetPosition:(int) enable;
 -(int) getWorkaroundRemoveBackwardJumpsForGetPosition;
 
+-(void) setAdvancedOpenMode:(int) mode;
+-(int) getAdvancedOpenMode;
+
 -(void) setAdvancedSourcePtsModifyMode:(int) mode;
 -(int) getAdvancedSourcePtsModifyMode;
 

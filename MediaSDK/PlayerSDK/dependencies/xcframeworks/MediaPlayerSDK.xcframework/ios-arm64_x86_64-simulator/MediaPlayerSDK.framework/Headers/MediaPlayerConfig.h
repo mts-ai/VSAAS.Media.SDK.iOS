@@ -177,6 +177,8 @@
 @property (nonatomic) NSString* timeshiftOutputUrl;
 
 // Advanced settings for previuos sections
+@property (nonatomic) int       advancedOpenMode;                             // 0 - normal, 1 - as preview. Default: 0
+
 @property (nonatomic) int       advancedConnectionNetworkProtocolBufferSize;  // should be > 0 but less 100000000, in bytes. Default:  -1
 @property (nonatomic) int       advancedConnectionNetworkProtocolPacketSize;  // should be > 0 but less 100000000, in bytes. Default:  -1
 @property (nonatomic) int       advancedSourceInitWithFastStreamDetection;    // Use minimal buffers count for stream info detection.

@@ -1,5 +1,24 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.113.231102
+
+CloudSDK
+Version 2.0.113_20231102:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231102
+- fixed ffrate functionality
+- added new advanced config setting for configure open mode:
+  advancedOpenMode
+
+PlayerSDK
+Version 2.0.20231102:
+- added ffrate setting when starting playback
+- added new advanced config setting for configure open mode:
+  advancedOpenMode
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.112.231019
 
 CloudSDK
