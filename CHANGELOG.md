@@ -1,5 +1,67 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.114.231130
+
+CloudSDK
+Version 2.0.114_20231130:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231129
+- greatly improved memory consumption and cpu utilization
+- added new renderer type
+- added framerate control
+- added buffer size and type configuration for video and audio renderer
+- fixed getVideoShot functionality
+- the default video renderer is now Metal based
+- added a lot of new settings:
+  dataReceiveTimeout,
+  videoKeyframeOnly,
+  synchroNeedDropVideoFrames,
+  advancedConnectionNetworkProtocolBufferSize,
+  advancedConnectionNetworkProtocolPacketSize,
+  advancedSourceAsyncGetPacket,
+  advancedVideoRendererPreferredFpsNum,
+  advancedVideoRendererPreferredFpsDen,
+  internalPlayerMode,
+  internalVideoDecoderOutputPictureFormat,
+  internalVideoRendererType,
+  internalVideoRendererDrawLastFrame,
+  internalVideoRendererDisplayMethodType,
+  internalVideoRendererDisplayLinkPreferredMinFps,
+  internalVideoRendererDisplayLinkPreferredMaxFps,
+  internalVideoRendererDisplayAnimation,
+  internalBufferSourceVideodecoderType,
+  internalBufferSourceVideodecoderSize,
+  internalBufferVideodecoderVideorendererType,
+  internalBufferVideodecoderVideorendererSize,
+  internalBufferSourceAudiodecoderType,
+  internalBufferSourceAudiodecoderSize,
+  internalBufferAudiodecoderAudiorendererType,
+  internalBufferAudiodecoderAudiorendererSize
+
+PlayerSDK
+Version 2.0.20231129:
+- greatly improved memory consumption and cpu utilization
+- deeply refactored video render functionality
+- deeply refactored video decoder functionality
+- added new renderer type
+- added framerate control
+- added buffer size and type configuration for video and audio renderer
+- fixed player mode functionality for playback pipeline configuration
+- fixed getVideoShot functionality
+- the default video renderer is now Metal based
+- added a lot of new settings:
+  internalVideoRendererType,
+  internalVideoRendererDrawLastFrame,
+  internalVideoDecoderOutputPictureFormat
+  internalVideoRendererDisplayMethodType
+  internalVideoRendererDisplayLinkPreferredMaxFps
+  internalVideoRendererDisplayAnimation
+  advancedVideoRendererPreferredFpsNum
+  advancedVideoRendererPreferredFpsDen
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.113.231102
 
 CloudSDK

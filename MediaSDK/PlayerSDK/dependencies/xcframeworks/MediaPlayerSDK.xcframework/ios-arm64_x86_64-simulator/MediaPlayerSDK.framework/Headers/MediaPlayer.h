@@ -117,11 +117,12 @@ typedef NS_ENUM(int, MediaPlayerState)
 
 typedef NS_ENUM(int, MediaPlayerModes)
 {
-    PP_MODE_ALL         = -1,        //default
+    PP_MODE_ALL         = 0x7FFFFFFF, // default
     PP_MODE_VIDEO       = 0x00000001,
     PP_MODE_AUDIO       = 0x00000002,
     PP_MODE_SUBTITLE    = 0x00000004,
-    PP_MODE_RECORD      = 0x00000008
+    PP_MODE_RECORD      = 0x00000008,
+    PP_MODE_DATA        = 0x00000010
 
 };
 

@@ -110,6 +110,16 @@ typedef NS_ENUM(int, CPlayerPlaybackModes) {
     CPlayerPlaybackModeMemoryCard = 1 << 1
 };
 
+typedef NS_ENUM(int, CPlayerInternalPlayerModes) {
+    CPlayerInternalPlayerModeAll      = 0x7FFFFFFF, // default
+    CPlayerInternalPlayerModeVideo    = 0x00000001,
+    CPlayerInternalPlayerModeAudio    = 0x00000002,
+    CPlayerInternalPlayerModeSubtitle = 0x00000004,
+    CPlayerInternalPlayerModeRecord   = 0x00000008,
+    CPlayerInternalPlayerModeData     = 0x00000010
+
+};
+
 typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> player);
 
 @protocol ICloudCPlayerCallback
@@ -273,6 +283,80 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(void) setShareTokenExpireNotificationDeltaTimeGuard:(long long) deltaTimeGuardInMs;
 -(long long) getShareTokenExpireNotificationDeltaTimeGuard;
+
+
+-(void) setDataReceiveTimeout:(int) timeout;
+-(int) getDataReceiveTimeout;
+
+-(void) setVideoKeyframeOnly:(int) enable;
+-(int) getVideoKeyframeOnly;
+
+-(void) setSynchroNeedDropVideoFrames:(int) enable;
+-(int) getSynchroNeedDropVideoFrames;
+
+-(void) setAdvancedConnectionNetworkProtocolBufferSize:(int) size;
+-(int) getAdvancedConnectionNetworkProtocolBufferSize;
+
+-(void) setAdvancedConnectionNetworkProtocolPacketSize:(int) size;
+-(int) getAdvancedConnectionNetworkProtocolPacketSize;
+
+-(void) setAdvancedSourceAsyncGetPacket:(int) enable;
+-(int) getAdvancedSourceAsyncGetPacket;
+
+-(void) setAdvancedVideoRendererPreferredFpsNum:(float) fps;
+-(float) getAdvancedVideoRendererPreferredFpsNum;
+
+-(void) setAdvancedVideoRendererPreferredFpsDen:(float) fps;
+-(float) getAdvancedVideoRendererPreferredFpsDen;
+
+
+-(void) setInternalPlayerMode:(CPlayerInternalPlayerModes) mode;
+-(CPlayerInternalPlayerModes) getInternalPlayerMode;
+
+-(void) setInternalVideoDecoderOutputPictureFormat:(OSType) format;
+-(OSType) getInternalVideoDecoderOutputPictureFormat;
+
+-(void) setInternalVideoRendererType:(int) type;
+-(int) getInternalVideoRendererType;
+
+-(void) setInternalVideoRendererDrawLastFrame:(int) enable;
+-(int) getInternalVideoRendererDrawLastFrame;
+
+-(void) setInternalVideoRendererDisplayMethodType:(int) type;
+-(int) getInternalVideoRendererDisplayMethodType;
+
+-(void) setInternalVideoRendererDisplayLinkPreferredMinFps:(int) fps;
+-(int) getInternalVideoRendererDisplayLinkPreferredMinFps;
+
+-(void) setInternalVideoRendererDisplayLinkPreferredMaxFps:(int) fps;
+-(int) getInternalVideoRendererDisplayLinkPreferredMaxFps;
+
+-(void) setInternalVideoRendererDisplayAnimation:(NSMutableDictionary*) animations;
+-(NSMutableDictionary*) getInternalVideoRendererDisplayAnimation;
+
+-(void) setInternalBufferSourceVideodecoderType:(int) type;
+-(int) getInternalBufferSourceVideodecoderType;
+
+-(void) setInternalBufferSourceVideodecoderSize:(int) size;
+-(int) getInternalBufferSourceVideodecoderSize;
+
+-(void) setInternalBufferVideodecoderVideorendererType:(int) type;
+-(int) getInternalBufferVideodecoderVideorendererType;
+
+-(void) setInternalBufferVideodecoderVideorendererSize:(int) size;
+-(int) getInternalBufferVideodecoderVideorendererSize;
+
+-(void) setInternalBufferSourceAudiodecoderType:(int) type;
+-(int) getInternalBufferSourceAudiodecoderType;
+
+-(void) setInternalBufferSourceAudiodecoderSize:(int) size;
+-(int) getInternalBufferSourceAudiodecoderSize;
+
+-(void) setInternalBufferAudiodecoderAudiorendererType:(int) type;
+-(int) getInternalBufferAudiodecoderAudiorendererType;
+
+-(void) setInternalBufferAudiodecoderAudiorendererSize:(int) size;
+-(int) getInternalBufferAudiodecoderAudiorendererSize;
 
 // local record config
 -(NSString*) getLocalRecordPath;

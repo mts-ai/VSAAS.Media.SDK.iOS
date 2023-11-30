@@ -112,8 +112,6 @@
 
 @property (nonatomic) MediaPlayerModes  playerMode;
 
-
-
 // adaptive bitrate mode
 @property (nonatomic) int       enableABR;                      // adaptive bitrate
 
@@ -206,6 +204,9 @@
 @property (nonatomic) NSString* advancedSourceOptionHttpReconnectOnHttpError; // reconnect on error from string with codes separated by ",". For example: "404,405"
 @property (nonatomic) int       advancedSourceOptionHttpReconnectDelayStep;   // wait X ms before next try for reconnect on http error. Default: -1 (0, 1000, 3000, 7000...)
 
+@property (nonatomic) float     advancedVideoRendererPreferredFpsNum;         // first fraction of 1.0/25.0 target fps. Default: -1, used stream fps
+@property (nonatomic) float     advancedVideoRendererPreferredFpsDen;         // second fraction of 1.0/25.0 target fps. Default: -1, used stream fps.
+
 // iOS specific
 @property (nonatomic) int        enableInternalGestureRecognizers;	  // Main:     0 - off, 0x01 - pinch(zoom), 0x02 - pan(move), 0x04 - single, 0x08 - double tap
                                                                       // Advanced: 0x80 - continues double taps switched aspects between 100% <-> last zoom/moved
@@ -215,6 +216,18 @@
 @property (nonatomic) int        qualityOfService;                    // NSQualityOfService. Default: NSQualityOfServiceUserInteractive
 @property (nonatomic) int        enableInternalAutoresizeToSuperview; // 0 - off, 1 - on. Default: 1
 @property (nonatomic) int        enableInternalAudioSessionConfigure; // 0 - don't touch AudioSession, 1 - own configure. Default: 1
+
+@property (nonatomic) OSType     internalVideoDecoderOutputPictureFormat; // supported: kCVPixelFormatType_32BGRA(RGB),
+                                                                          // kCVPixelFormatType_420YpCbCr8Planar(YUV420),
+                                                                          // kCVPixelFormatType_420YpCbCr8BiPlanarFullRange(NV12)
+@property (nonatomic) int        internalVideoRendererType;                       // 0 - encoder based, 1 - layer contents based
+@property (nonatomic) int        internalVideoRendererDrawLastFrame;              // 0 - off, 1 - on
+@property (nonatomic) int        internalVideoRendererDisplayMethodType;          // 0 - direct draw, 1 - display link
+@property (nonatomic) int        internalVideoRendererDisplayLinkPreferredMinFps; // > 0 - desired frame rate with display link
+@property (nonatomic) int        internalVideoRendererDisplayLinkPreferredMaxFps; // > 0 - desired frame rate with display link
+@property (nonatomic) NSMutableDictionary* internalVideoRendererDisplayAnimation; // NULL - removed all layer animations
+                                                                                  // for example, disable layer animations for position, contents, bounds keys
+                                                                                  // [NSDictionary dictionaryWithObjects:@[[NSNull null], [NSNull null], [NSNull null]] forKeys:@[@"position", @"contents", @"bounds"]]]
 
 // for customize our audio session
 @property (nonatomic) NSString*  internalAudioSessionMode;            // values from AVAudioSessionMode. Default: @"AVAudioSessionModeDefault"
