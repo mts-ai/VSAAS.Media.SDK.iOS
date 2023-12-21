@@ -1,5 +1,22 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.115.231221
+
+CloudSDK
+Version 2.0.115_20231221:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20231221
+- fixed existing getActivty and getCalendar methods to match the latest VXG API changes.
+- added new parameters for getActivty and getCalendar methods
+- added new parameters for getTimeline method
+- added new methods: getTimelineV4, getEventsTypes, getEventsTypesV4
+
+PlayerSDK
+Version 2.0.20231221:
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.114.231130
 
 CloudSDK
