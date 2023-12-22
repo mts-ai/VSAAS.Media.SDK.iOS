@@ -646,18 +646,18 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
                   onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 //events
--(int) getEventsTypes:(Boolean) isCurrentCameraId
-            cameraIds:(NSArray<NSNumber*>* _Nullable) cameraIds
-                start:(long long) start
-                  end:(long long) end
-          daysincamtz:(NSNumber* _Nullable) isDaysincamtz
-             timezone:(NSString* _Nullable) timezone
-           onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
--(int) getEventsTypesV4:(long long) start
-                    end:(long long) end
-            daysincamtz:(NSNumber* _Nullable) isDaysincamtz
-               timezone:(NSString* _Nullable) timezone
-             onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(int) getEventTypes:(Boolean) isCurrentCameraId
+           cameraIds:(NSArray<NSNumber*>* _Nullable) cameraIds
+               start:(long long) start
+                 end:(long long) end
+         daysincamtz:(NSNumber* _Nullable) isDaysincamtz
+            timezone:(NSString* _Nullable) timezone
+          onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(int) getEventTypesV4:(long long) start
+                   end:(long long) end
+           daysincamtz:(NSNumber* _Nullable) isDaysincamtz
+              timezone:(NSString* _Nullable) timezone
+            onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(NSDictionary* _Nullable) getEventsSync:(long long) start
                                      end:(long long) end
                                    limit:(long) limit

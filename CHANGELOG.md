@@ -1,5 +1,17 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.116.231222
+
+CloudSDK
+Version 2.0.116_20231222:
+- corrected getEventTypes method name
+
+PlayerSDK
+Version 2.0.20231221:
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.115.231221
 
 CloudSDK
