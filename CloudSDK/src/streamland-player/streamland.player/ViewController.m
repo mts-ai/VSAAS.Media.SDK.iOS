@@ -55,7 +55,7 @@
     access_token_tf.delegate = self;
     
     // fill field with desired token value
-    access_token_tf.text = @"";
+    access_token_tf.text = @"eyJjYW1pZCI6IDkzNzQ4MSwgImNtbmdyaWQiOiA5Mzc0ODgsICJjYW1fc3AiOiA0NDMsICJhY2Nlc3MiOiAiYWxsIiwgInRva2VuIjogInNoYXJlLmV5SnphU0k2SURFNE56UXpOVGw5LjY1YTE4YzZldGJjMWZhYjAwLlhsVUdyUkw5c3lWeTlqLURydy1FY3ZYNnQ4QSIsICJhcGkiOiAid2ViLnZhcGxhdGZvcm0ucnUiLCAiY2FtX3AiOiA4MCwgImNhbSI6ICJjYW0udmFwbGF0Zm9ybS5ydSJ9";
     access_token_tf.placeholder = @"type token value here";
     
     conf = [[CPlayerConfig alloc] init];
@@ -366,6 +366,8 @@
     if (!isBackwardStreaming) {
         [microphone_btn setEnabled: NO];
         [audioCapture MuteMicrophone:isMicrophoneMuted];
+        NSString* backward = [ccplayer getBackwardUrl];
+        NSLog(@"backward: %@", backward);
         [self startStreaming:[ccplayer getBackwardUrl]];
     } else {
         isMicrophoneMuted = !isMicrophoneMuted;

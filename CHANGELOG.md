@@ -1,5 +1,41 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.118.240307
+
+CloudSDK
+Version 2.0.118_20240307:
+- updated versions of used SDK: 
+  EncoderSDK: 2.0.20240307
+
+PlayerSDK
+Version 2.0.20240122:
+
+EncoderSDK
+Version 2.0.20240307:
+- fixed possible freezes during the application lifecycle
+- added new advanced settings:
+  internalDidEnterBackgroundHandling
+  internalWillResignActiveHandling
+  internalWillEnterForegroundHandling
+  internalDidBecomeActiveHandling
+  internalWillTerminateHandling
+
+### MobileSDK 2.0.117.240122
+
+CloudSDK
+Version 2.0.117_20240122:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20240122
+
+PlayerSDK
+Version 2.0.20240122:
+- improved thumbnailer speed
+- improved audio / video synchronization
+- fixed low speed issue on some streams
+
+EncoderSDK
+Version 2.0.20231019:
+
 ### MobileSDK 2.0.116.231222
 
 CloudSDK

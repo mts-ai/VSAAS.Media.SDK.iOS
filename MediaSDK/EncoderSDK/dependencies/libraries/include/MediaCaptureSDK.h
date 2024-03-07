@@ -180,6 +180,22 @@ typedef void (^MediaCaptureExternalAudioSourceDataProviderBlock)(CMSampleBufferR
 -(void) setExternalAudioSourceStreamBasicDescription:(AudioStreamBasicDescription*)desc;
 -(AudioStreamBasicDescription*) getExternalAudioSourceStreamBasicDescription;
 
+// iOS specific
+-(void) setInternalDidEnterBackgroundHandling: (int) state; // 0 - disabled, 1 - will be stopped if not already. Default: 1
+-(int) getInternalDidEnterBackgroundHandling;
+
+-(void) setInternalWillResignActiveHandling: (int) state; // 0 - disabled, 1 - will be stopped if not already. Default: 1
+-(int) getInternalWillResignActiveHandling;
+
+-(void) setInternalWillEnterForegroundHandling: (int) state; // 0 - disabled, 1 - will be started if not already. Default: 1
+-(int) getInternalWillEnterForegroundHandling;
+
+-(void) setInternalDidBecomeActiveHandling: (int) state; // 0 - disabled, 1 - will be started if not already. Default: 1
+-(int) getInternalDidBecomeActiveHandling;
+
+-(void) setInternalWillTerminateHandling: (int) state; // 0 - disabled, 1 - will be closed if not already. Default: 1
+-(int) getInternalWillTerminateHandling;
+
 @end
 
 @protocol MediaCaptureCallback <NSObject>
