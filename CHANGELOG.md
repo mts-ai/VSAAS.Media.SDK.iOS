@@ -1,5 +1,20 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.120.240321
+
+CloudSDK
+Version 2.0.120_20240321:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20240321
+
+PlayerSDK
+Version 2.0.20240321:
+- fixed possible UI thread checker issue
+- fixed possible crash on close
+
+EncoderSDK
+Version 2.0.20240319:
+
 ### MobileSDK 2.0.119.240319
 
 CloudSDK
