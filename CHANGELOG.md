@@ -1,5 +1,17 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.122.240324
+
+CloudSDK
+Version 2.0.122_20240324:
+- optimized the number of URL sessions used
+
+PlayerSDK
+Version 2.0.20240321:
+
+EncoderSDK
+Version 2.0.20240319:
+
 ### MobileSDK 2.0.121.240324
 
 CloudSDK
