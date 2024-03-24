@@ -4,7 +4,7 @@
 
 CloudSDK
 Version 2.0.122_20240324:
-- optimized the number of URL sessions used
+- fixed possible URL session invalidate issue
 
 PlayerSDK
 Version 2.0.20240321:
