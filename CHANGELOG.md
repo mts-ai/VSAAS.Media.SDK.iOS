@@ -1,5 +1,17 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.123.240326
+
+CloudSDK
+Version 2.0.123_20240326:
+- fixed rare issue with invalidate URL session
+
+PlayerSDK
+Version 2.0.20240321:
+
+EncoderSDK
+Version 2.0.20240319:
+
 ### MobileSDK 2.0.122.240324
 
 CloudSDK
