@@ -1,5 +1,20 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.124.240411
+
+CloudSDK
+Version 2.0.124_20240411:
+- updated versions of used SDK: 
+  EncoderSDK: 2.0.20240411
+
+PlayerSDK
+Version 2.0.20240321:
+
+EncoderSDK
+Version 2.0.20240411:
+- added the ability to apply various filters to input audio data
+
+
 ### MobileSDK 2.0.123.240326
 
 CloudSDK

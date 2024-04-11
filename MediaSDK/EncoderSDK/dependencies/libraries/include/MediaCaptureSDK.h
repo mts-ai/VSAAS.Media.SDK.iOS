@@ -93,6 +93,7 @@ typedef NS_ENUM(int, CaptureDeviceOrientation){
 };
 
 extern int VXG_CaptureSDK_LogLevel;
+extern int VXG_CaptureSDK_Media_LogLevel;
 extern NSDictionary* VXG_CaptureSDK_LogFilter;
 
 extern int VXG_CaptureSDK_ffmpeg_inited;
@@ -180,6 +181,9 @@ typedef void (^MediaCaptureExternalAudioSourceDataProviderBlock)(CMSampleBufferR
 -(void) setExternalAudioSourceStreamBasicDescription:(AudioStreamBasicDescription*)desc;
 -(AudioStreamBasicDescription*) getExternalAudioSourceStreamBasicDescription;
 
+@property (nonatomic) int advancedAudioInputEnablePreprocessing; // 0 - disable, 1 - based on ffmpeg graph, 2 - custom
+@property (nonatomic) NSMutableArray<NSDictionary*>* advancedAudioInputPreprocessingFilters; // key - name, value - config
+
 // iOS specific
 -(void) setInternalDidEnterBackgroundHandling: (int) state; // 0 - disabled, 1 - will be stopped if not already. Default: 1
 -(int) getInternalDidEnterBackgroundHandling;
@@ -195,6 +199,8 @@ typedef void (^MediaCaptureExternalAudioSourceDataProviderBlock)(CMSampleBufferR
 
 -(void) setInternalWillTerminateHandling: (int) state; // 0 - disabled, 1 - will be closed if not already. Default: 1
 -(int) getInternalWillTerminateHandling;
+
+-(void) setInternalAudioEnableStreamDump: (BOOL) enable;
 
 @end
 
