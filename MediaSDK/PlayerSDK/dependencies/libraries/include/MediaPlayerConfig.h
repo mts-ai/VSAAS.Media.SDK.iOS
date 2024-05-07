@@ -51,12 +51,12 @@
 @property (nonatomic) int       aspectRatioMode;            // 0 - stretch,
                                                             // 1 - fit to screen with aspect ratio,
                                                             // 2 - crop(height) with aspect, 21 - crop(width) with aspect, 3 - 100% size,
-                                                            // 4,43,5,53 - zoom/move mode with real size (100%)
-                                                            // 6,40,7,50 - zoom/move mode with stretch
-                                                            // 41,51 - zoom/move mode with aspect ratio
-                                                            // 420,520 - zoom/move mode with crop(height) and aspect
-                                                            // 421,521 - zoom/move mode with crop(width) and aspect
-                                                            // 4201 - zoom/move mode with crop(height), aspect and min zoom src width
+// 4,43,5,53 - zoom/move mode with real size (100%)
+// 6,40,7,50 - zoom/move mode with stretch
+// 41,51 - zoom/move mode with aspect ratio
+// 420,520 - zoom/move mode with crop(height) and aspect
+// 421,521 - zoom/move mode with crop(width) and aspect
+// 4201 - zoom/move mode with crop(height), aspect and min zoom src width
 @property (nonatomic) int       aspectRatioZoomModePercent;    // value in percents
 @property (nonatomic) int       aspectRatioZoomModePercentMin; // min value in percents
 @property (nonatomic) int       aspectRatioZoomModePercentMax; // max value in percents

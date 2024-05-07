@@ -1,5 +1,39 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.126.240507
+
+CloudSDK
+Version 2.0.126_20240507:
+- added offset emulation for getTimeline API
+- added delete storage data API support
+- added order_by support for getTimeline API
+- added new API support: getRecords*, deleteRecords*
+- fixed delete, post and put query issues
+
+PlayerSDK
+Version 2.0.20240503:
+- updated license list for Almatel
+
+EncoderSDK
+Version 2.0.20240503:
+- updated license list for Almatel
+
+### MobileSDK 2.0.125.240503
+
+CloudSDK
+Version 2.0.125_20240503:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20240503
+  EncoderSDK: 2.0.20240503
+
+PlayerSDK
+Version 2.0.20240503:
+- updated license list for Almatel
+
+EncoderSDK
+Version 2.0.20240503:
+- updated license list for Almatel
+
 ### MobileSDK 2.0.124.240411
 
 CloudSDK

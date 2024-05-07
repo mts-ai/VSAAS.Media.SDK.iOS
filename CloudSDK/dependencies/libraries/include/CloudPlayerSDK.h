@@ -573,6 +573,35 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
            offset:(long) offset
       isTempFiles:(NSNumber* _Nullable) isTempFiles
        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(NSDictionary* _Nullable) getRecordsSync:(Boolean) isCurrentCameraId
+                                    start:(long long) start
+                                      end:(long long) end
+                                    order:(Boolean) isAscending
+                                    limit:(long) limit
+                                   offset:(long) offset
+                              isTempFiles:(NSNumber* _Nullable) isTempFiles;
+-(int) getRecords:(Boolean) isCurrentCameraId
+            start:(long long) start
+              end:(long long) end
+            order:(Boolean) isAscending
+            limit:(long) limit
+           offset:(long) offset
+      isTempFiles:(NSNumber* _Nullable) isTempFiles
+       onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(NSDictionary* _Nullable) getRecordSync:(long long) rid;
+-(int) getRecord:(long long) rid
+      onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+
+-(int) deleteRecordsSync:(Boolean) isCurrentCameraId
+                   start:(long long) start
+                     end:(long long) end;
+-(int) deleteRecords:(Boolean) isCurrentCameraId
+               start:(long long) start
+                 end:(long long) end
+          onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(int) deleteRecordSync:(long long) rid;
+-(int) deleteRecord:(long long) rid
+         onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 -(NSMutableArray<NSString*>* _Nullable) getCalendarSync:(long long) start
                                                     end:(long long) end
@@ -613,6 +642,22 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 
 -(CTimeline* _Nullable) getTimelineSync:(long long) start
                                     end:(long long) end;
+-(CTimeline* _Nullable) getTimelineSync:(long long) start
+                                    end:(long long) end
+                          isInterrupted:(Boolean (^_Nullable)(void)) isInterrupted;
+-(CTimeline* _Nullable) getTimelineSync:(long long) start
+                                    end:(long long) end
+                                  order:(Boolean) isAscending
+                               order_by:(NSString*_Nullable) order_by
+                          isInterrupted:(Boolean (^_Nullable)(void)) isInterrupted;
+-(CTimeline* _Nullable) getTimelineSync:(NSArray<NSNumber*>* _Nullable) slices
+                                  start:(long long) start
+                                    end:(long long) end
+                                  limit:(long) limit
+                                 offset:(long) offset
+                                  order:(Boolean) isAscending
+                               order_by:(NSString* _Nullable) order_by
+                          isInterrupted:(Boolean (^_Nullable)(void)) isInterrupted;
 -(int) getTimeline:(long long) start
                end:(long long) end
         onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
@@ -622,11 +667,27 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
              limit:(long) limit
             offset:(long) offset
         onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(int) getTimeline:(NSArray<NSNumber*>* _Nullable) slices
+             start:(long long) start
+               end:(long long) end
+             limit:(long) limit
+            offset:(long) offset
+             order:(Boolean) isAscending
+          order_by:(NSString*_Nullable) order_by
+        onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 -(int) getTimelineV4:(NSArray<NSNumber*>* _Nullable) slices
                start:(long long) start
                  end:(long long) end
                limit:(long) limit
               offset:(long) offset
+          onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
+-(int) getTimelineV4:(NSArray<NSNumber*>* _Nullable) slices
+               start:(long long) start
+                 end:(long long) end
+               limit:(long) limit
+              offset:(long) offset
+               order:(Boolean) isAscending
+            order_by:(NSString*_Nullable) order_by
           onComplete:(void (^ _Nonnull)(NSObject* _Nullable, int)) complete;
 
 -(NSDictionary* _Nullable) getTimelineThumbnailsSync:(long long) start
