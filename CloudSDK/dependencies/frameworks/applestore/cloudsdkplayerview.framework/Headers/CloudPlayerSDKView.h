@@ -118,10 +118,10 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
 -(int) OnError:(int) errcode;
 -(int) OnTrial;
 
--(int) OnPlayingPositionChanged:(long long) position
-                   withDuration:(long long) duration
-                 withRangeStart:(long long) rangeStart
-                   withRangeEnd:(long long) rangeEnd;
+-(int) OnTimelinePlayingPositionChanged:(long long) position
+                           withDuration:(long long) duration
+                         withRangeStart:(long long) rangeStart
+                           withRangeEnd:(long long) rangeEnd;
 
 @optional
 -(int) OnControlsToggled:(Boolean) show;
@@ -139,7 +139,13 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
 - (int) OnAudioMicrophoneFrameAvailable:(nonnull CMSampleBufferRef) frame
                           averageLevels:(nullable float*) avrLevels
                       averageLevelsSize:(size_t) avrLevelsSize;
-
+@optional
+- (void) OnPlaybackPositionChanged:(Boolean)isLive
+                           current:(long long)current
+                      segmentStart:(long long)segmentStart
+                       segmentStop:(long long)segmentStop
+                        rangeStart:(long long)rangeStart
+                         rangeStop:(long long)rangeStop;
 @optional
 -(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 

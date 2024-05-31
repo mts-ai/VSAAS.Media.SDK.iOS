@@ -140,6 +140,8 @@ typedef void (^MediaCaptureExternalAudioSourceDataProviderBlock)(CMSampleBufferR
 - (int64_t) getAudioSamplingRate;
 - (UInt32) getAACEncodeBitrate;
 - (int) setAACEncodeBitrate: (UInt32) bitrate;
+-(Boolean) isAudioInputMute;
+- (void) setAudioInputMute:(Boolean) isMute;
 
 -(void) setLicenseKey: (NSString*) license_key;
 

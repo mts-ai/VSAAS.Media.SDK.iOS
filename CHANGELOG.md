@@ -1,5 +1,26 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.127.240531
+
+CloudSDK
+Version 2.0.127_20240531:
+- updated versions of used SDK: 
+  EncoderSDK: 2.0.20240531
+- improved setRange functionality
+- added the ability to monitor the current position when playing a stream.
+- added new setting for enable monitoring current position:
+  *PlaybackPositionMonitorType
+- added optional callback for monitoring current position:
+  OnPlaybackPositionChanged
+
+
+PlayerSDK
+Version 2.0.20240503:
+
+EncoderSDK
+Version 2.0.20240531:
+- added new setting: *AudioInputMute
+
 ### MobileSDK 2.0.126.240507
 
 CloudSDK

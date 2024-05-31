@@ -120,25 +120,35 @@ typedef NS_ENUM(int, CPlayerInternalPlayerModes) {
 
 };
 
-typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> player);
+typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> _Nonnull player);
+typedef int (^CPlayerAudioMicrophoneFrameAvailableCallback)(id<ICloudCObject> _Nonnull player, CMSampleBufferRef _Nullable frame, float* _Nullable avrLevels, size_t avrLevelsSize);
+typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnull player, Boolean isLive, long long current, long long segmentStart, long long segmentStop, long long rangeStart, long long rangeStop);
 
-@protocol ICloudCPlayerCallback
+@protocol ICloudCPlayerCallback<NSObject>
 -(void) Status:(CloudPlayerEvent) status_code
-        object:(id<ICloudCObject>) player;
--(int) OnAudioMicrophoneFrameAvailable:(id<ICloudCObject>) player
+        object:(id<ICloudCObject> _Nonnull) player;
+-(int) OnAudioMicrophoneFrameAvailable:(id<ICloudCObject> _Nonnull) player
                                  frame:(nonnull CMSampleBufferRef) frame
                          averageLevels:(nullable float*) avrLevels
                      averageLevelsSize:(size_t) avrLevelsSize;
+@optional
+- (void) OnPlaybackPositionChanged:(id<ICloudCObject> _Nonnull)player
+                            isLive:(Boolean)isLive
+                            current:(long long)current
+                       segmentStart:(long long)segmentStart
+                        segmentStop:(long long)segmentStop
+                         rangeStart:(long long)rangeStart
+                          rangeStop:(long long)rangeStop;
 @end
 
 // protocol
 @protocol CloudPlayerSDKDelegate<NSObject>
 
 @optional
--(int) OnPlayingPositionChanged:(long long) position
-                   withDuration:(long long) duration
-                 withRangeStart:(long long) rangeStart
-                   withRangeEnd:(long long) rangeEnd;
+-(int) OnTimelinePlayingPositionChanged:(long long) position
+                           withDuration:(long long) duration
+                         withRangeStart:(long long) rangeStart
+                           withRangeEnd:(long long) rangeEnd;
 -(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 
 @end
@@ -284,6 +294,8 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(void) setShareTokenExpireNotificationDeltaTimeGuard:(long long) deltaTimeGuardInMs;
 -(long long) getShareTokenExpireNotificationDeltaTimeGuard;
 
+-(void) setPlaybackPositionMonitorType:(int) type;
+-(int) getPlaybackPositionMonitorType;
 
 -(void) setDataReceiveTimeout:(int) timeout;
 -(int) getDataReceiveTimeout;
@@ -401,6 +413,12 @@ typedef void (^CPlayerCallback)(CloudPlayerEvent status_code, id<ICloudCObject> 
 -(instancetype)initWithParams:(UIView*) view
                        config:(CPlayerConfig*) config
             protocol_callback:(id<ICloudCPlayerCallback>) callbacks;
+
+-(instancetype)initWithParams:(UIView*) view
+                       config:(CPlayerConfig*) config
+                     callback:(CPlayerCallback) callbacks
+          onMicFrameAvailable:(CPlayerAudioMicrophoneFrameAvailableCallback) frameAvailableCallback
+    onPlaybackPositionChanged:(CPlayerPlaybackPositionChangedCallback) positionChangedCallback;
 
 -(void) setDelegate:(id<CloudPlayerSDKDelegate>) delegate;
 -(id<CloudPlayerSDKDelegate>) getDelegate;
