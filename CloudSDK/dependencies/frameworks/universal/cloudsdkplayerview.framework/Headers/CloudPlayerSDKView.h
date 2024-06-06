@@ -147,6 +147,11 @@ typedef NS_OPTIONS(int, CloudPlayerSDKViewModes) {
                         rangeStart:(long long)rangeStart
                          rangeStop:(long long)rangeStop;
 @optional
+- (int) OnAudioSessionStateDidChange:(Boolean)active
+                            category:(AVAudioSessionCategory _Nullable)category
+                             options:(AVAudioSessionCategoryOptions)options
+                                mode:(AVAudioSessionMode _Nullable)mode;
+@optional
 -(int) onSharedTokenWillExpireIn:(long long) deltaTimeInMs;
 
 @end

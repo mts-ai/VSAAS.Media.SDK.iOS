@@ -1,5 +1,26 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.128.240606
+
+CloudSDK
+Version 2.0.128_20240606:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20240606
+- fixed PTZ api issues
+- added audiosession state check functionality
+- added new callbacks: OnAudioSessionStateDidChange
+- added new method: isAudioSessionActive
+
+PlayerSDK
+Version 2.0.20240606:
+- added audiosession status check functionality
+- added optional callback to monitor current position of playing stream
+- added new callbacks: OnAudioSessionStateDidChange, OnStreamPositionDidChange
+- added new method: isAudioSessionActive
+
+EncoderSDK
+Version 2.0.20240531:
+
 ### MobileSDK 2.0.127.240531
 
 CloudSDK

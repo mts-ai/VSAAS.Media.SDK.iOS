@@ -308,6 +308,26 @@ typedef NS_ENUM(int, MediaPlayerGraphicLayer)
 - (int) OnTimeshiftEndPrebufferng: (MediaPlayer*)player
                         withValue: (long long)value;
 
+// Advanced
+@optional
+- (int) OnStreamPositionDidChange: (MediaPlayer*)player
+                            first: (int64_t)first
+                          current: (int64_t)current
+                             last: (int64_t)last
+                         duration: (int64_t)duration
+                      stream_type: (int)stream_type
+                  timeshift_first: (int64_t)timeshift_first
+                timeshift_current: (int64_t)timeshift_current
+                   timeshift_last: (int64_t)timeshift_last
+               timeshift_duration: (int64_t)timeshift_duration
+            timeshift_stream_type: (int)timeshift_stream_type
+                            error: (int)error;
+@optional
+- (int) OnAudioSessionStateDidChange: (MediaPlayer*)player
+                              active: (Boolean)active
+                            category: (AVAudioSessionCategory)category
+                             options: (AVAudioSessionCategoryOptions)options
+                                mode: (AVAudioSessionMode)mode;
 @end
 
 // main functionailty
@@ -412,9 +432,9 @@ typedef NS_ENUM(int, MediaPlayerGraphicLayer)
 - (NSString*) recordGetFileName: (int32_t)param; //0 - last stopped; 1 - last started
 - (int64_t) recordGetStat: (MediaPlayerRecordStat)param;
 
-
 // Helper methods
 - (Boolean) isHardwareDecoding;
+- (Boolean) isAudioSessionActive;
 
 // Get available directions for move mode
 // Return: possible move 0 - nothing, 1 - to left, 2 - to right, 4 - to top, 8 - to bottom

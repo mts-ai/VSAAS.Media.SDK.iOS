@@ -139,6 +139,12 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
                         segmentStop:(long long)segmentStop
                          rangeStart:(long long)rangeStart
                           rangeStop:(long long)rangeStop;
+- (int) OnAudioSessionStateDidChange:(id<ICloudCObject> _Nonnull)player
+                              active:(Boolean)active
+                            category:(AVAudioSessionCategory _Nullable)category
+                             options:(AVAudioSessionCategoryOptions)options
+                                mode:(AVAudioSessionMode _Nullable)mode;
+
 @end
 
 // protocol
@@ -530,6 +536,8 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
 -(void) localRecordStop;
 -(int64_t) localRecordGetStat:(CPlayerLocalRecordStats) param;
 -(NSString*) localRecordGetFileName:(int32_t) param;
+
+- (Boolean) isAudioSessionActive;
 
 -(CCPrivacyMode) getPrivacyMode;
 -(void) setPrivacyMode:(CCPrivacyMode) mode;
