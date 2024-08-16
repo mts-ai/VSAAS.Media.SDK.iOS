@@ -1,5 +1,24 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.129.240816
+
+CloudSDK
+Version 2.0.129_20240816:
+- updated versions of used SDK: 
+  PlayerSDK: 2.0.20240816
+- added the ability to select the recording container type
+- added new settings for recording container type
+- fixed a possible issue with live stream stopping after the camera became active
+- added new setting: workaroundWaitUntilLiveStreamCompletelyReady
+
+PlayerSDK
+Version 2.0.20240816:
+- added the ability to select the recording container type
+- added new settings for recording container type
+
+EncoderSDK
+Version 2.0.20240531:
+
 ### MobileSDK 2.0.128.240606
 
 CloudSDK

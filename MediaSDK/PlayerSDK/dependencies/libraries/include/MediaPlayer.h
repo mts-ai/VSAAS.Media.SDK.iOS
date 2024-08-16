@@ -425,6 +425,12 @@ typedef NS_ENUM(int, MediaPlayerGraphicLayer)
            splitTime: (int32_t)splitTime
            splitSize: (int32_t)splitSize
               prefix: (NSString*)prefix;
+- (void) recordSetup: (NSString*)path
+               flags: (MediaPlayerRecordFlags)flags
+           splitTime: (int32_t)splitTime
+           splitSize: (int32_t)splitSize
+              prefix: (NSString*)prefix
+              format: (NSString*)format;
 
 - (void) recordStart;
 - (void) recordStop;

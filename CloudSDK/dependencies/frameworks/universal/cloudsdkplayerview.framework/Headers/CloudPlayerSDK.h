@@ -241,6 +241,9 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
 -(void) setWorkaroundRemoveBackwardJumpsForGetPosition:(int) enable;
 -(int) getWorkaroundRemoveBackwardJumpsForGetPosition;
 
+-(void) setWorkaroundWaitUntilLiveStreamCompletelyReady:(int) valueInMs;
+-(int) getWorkaroundWaitUntilLiveStreamCompletelyReady;
+
 -(void) setAdvancedOpenMode:(int) mode;
 -(int) getAdvancedOpenMode;
 
@@ -395,6 +398,9 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
 -(NSString*) getLocalRecordPrefix;
 -(void) setLocalRecordPrefix:(NSString*) prefix;
 
+-(NSString*) getLocalRecordFormat;
+-(void) setLocalRecordFormat:(NSString*) format;
+
 -(int64_t) getLocalRecordTrimPosStart; // in ms. (-1) not set, all duration.
 -(void) setLocalRecordTrimPosStart:(int64_t) startPos;
 
@@ -531,6 +537,12 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
                 splitTime:(int32_t) splitTime
                 splitSize:(int32_t) splitSize
                    prefix:(NSString*) prefix;
+- (void) localRecordSetup:(NSString*) path
+                    flags:(CPlayerLocalRecordFlags) flags
+                splitTime:(int32_t) splitTime
+                splitSize:(int32_t) splitSize
+                   prefix:(NSString*) prefix
+                   format:(NSString*) format;
 -(Boolean) isLocalRecordStarted;
 -(void) localRecordStart;
 -(void) localRecordStop;

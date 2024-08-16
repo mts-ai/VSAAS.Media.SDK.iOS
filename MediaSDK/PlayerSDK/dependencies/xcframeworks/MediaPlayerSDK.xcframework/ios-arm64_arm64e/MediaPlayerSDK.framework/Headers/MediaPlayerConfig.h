@@ -99,6 +99,7 @@
 @property (nonatomic) int                       recordSplitTime;     // seconds. in case PP_RECORD_SPLIT_BY_TIME
 @property (nonatomic) int                       recordSplitSize;     // MB.   in case PP_RECORD_SPLIT_BY_SIZE
 @property (nonatomic) NSString*                 recordPrefix;
+@property (nonatomic) NSString*                 recordFormat;
 @property (nonatomic) int64_t                   recordTrimPosStart;  // in ms. (-1) not set, all duration.
 @property (nonatomic) int64_t                   recordTrimPosEnd;    // in ms. (-1) not set, all duration.
 
