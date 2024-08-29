@@ -1,5 +1,24 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.130.240829
+
+CloudSDK
+Version 2.0.130_20240829:
+- updated versions of used SDK:
+  PlayerSDK: 2.0.20240829
+- fixed possible issue with missed notifications about
+  stream unreachable and data timeout
+- fixed possible issue with missed notification about
+  recording stop on reconnect
+
+PlayerSDK
+Version 2.0.20240829:
+- enabled transcoding only for g711 and mp4 container
+- improved transcoding functionality
+
+EncoderSDK
+Version 2.0.20240531:
+
 ### MobileSDK 2.0.129.240816
 
 CloudSDK
