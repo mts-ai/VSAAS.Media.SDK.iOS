@@ -1,5 +1,21 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.131.240927
+
+CloudSDK
+Version 2.0.131_20240927:
+- updated versions of used SDK:
+  PlayerSDK: 2.0.20240927
+  EncoderSDK: 2.0.20240927
+
+PlayerSDK
+Version 2.0.20240927:
+- corrected notification status flow for recording streams without data
+
+EncoderSDK
+Version 2.0.20240927:
+- added workaround for possible crash in system getPeakAudioLevelForChannel
+
 ### MobileSDK 2.0.130.240829
 
 CloudSDK
