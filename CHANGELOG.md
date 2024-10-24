@@ -1,5 +1,20 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.132.241024
+
+CloudSDK
+Version 2.0.132_20241024:
+- updated versions of used SDK:
+  PlayerSDK: 2.0.20241024
+- optimized stream opening time for inactive camera
+
+PlayerSDK
+Version 2.0.20241024:
+- optimized stream opening time
+
+EncoderSDK
+Version 2.0.20240927:
+
 ### MobileSDK 2.0.131.240927
 
 CloudSDK
