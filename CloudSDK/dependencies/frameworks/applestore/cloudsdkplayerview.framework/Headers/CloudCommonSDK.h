@@ -8,6 +8,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@interface CBackendConfig: NSObject
+@property(copy, nonatomic) NSString* url;
+@property NSMutableDictionary* headers;
+
++(void) defaultConfig:(NSString*) url
+              headers:(NSMutableDictionary*) headers;
+
+@end
+
 @protocol CloudProxyNetworkRequests<NSObject>
 @optional
 -(void) executeGetRequest:(NSString*) endpoint
@@ -121,3 +130,4 @@ typedef NS_OPTIONS(int, CTimelineControls) {
 @property(copy, nonatomic) NSString* time;
 @property(copy, nonatomic) NSString* expire;
 @end
+

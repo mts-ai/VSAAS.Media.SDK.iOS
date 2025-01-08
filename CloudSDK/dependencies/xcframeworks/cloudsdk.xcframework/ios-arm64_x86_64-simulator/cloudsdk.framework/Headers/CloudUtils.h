@@ -54,14 +54,15 @@
 +(NSString*) formatTime_forMediaFileUploading: (long long) utc;
 +(NSString*) formatTimeWithSSS:(long long)utc;
 +(NSDate*) convertTimeIntoDate:(NSString*)time withFormat:(NSString *)format withTimezone:(NSTimeZone*)zone;
++(Boolean) isJWT:(NSString*)source;
 
-+(NSDictionary*) parseToken: (NSString*)source
-        withDefaultProtocol: (NSString*) defaultProtocol
-            withDefaultPort: (int) defaultPort
-             withResultSVCP: (NSString**) presultSvcp
-   withResultIsPathIncluded: (Boolean*) pisPathIncluded
-          withLastErrorCode: (int*) plastErrorCode
-        withLastErrorString: (NSString**) plastErrorString;
++(NSMutableDictionary*) parseToken: (NSString*)source
+               withDefaultProtocol: (NSString*) defaultProtocol
+                   withDefaultPort: (int) defaultPort
+                    withResultSVCP: (NSString**) presultSvcp
+          withResultIsPathIncluded: (Boolean*) pisPathIncluded
+                 withLastErrorCode: (int*) plastErrorCode
+               withLastErrorString: (NSString**) plastErrorString;
 
 +(long long) cameraIdByToken: (NSString*) token;
 

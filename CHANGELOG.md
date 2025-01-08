@@ -1,5 +1,21 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.134.250108
+
+CloudSDK
+Version 2.0.134_20250108:
+- refactored for support several REST API providers
+- added BE REST API support
+- added settings for backend path configuration
+- added new settings for missed parameters in BE access token:
+  identityId, cameraId, cameraShareToken.
+
+PlayerSDK
+Version 2.0.20241207:
+
+EncoderSDK
+Version 2.0.20240927:
+
 ### MobileSDK 2.0.133.241207
 
 CloudSDK

@@ -414,6 +414,14 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
 
 @end
 
+@interface CSourceParams: NSObject
+
+@property(copy, nonatomic) NSString* _Nullable identityId;
+@property(copy, nonatomic) NSString* _Nullable cameraId;
+@property(copy, nonatomic) NSString* _Nullable cameraShareToken;
+
+@end
+
 @interface CloudPlayerSDK: NSObject<ICloudCObject>
 + (instancetype)new NS_UNAVAILABLE;
 - (instancetype)init NS_UNAVAILABLE;
@@ -422,7 +430,17 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
                        config:(CPlayerConfig*) config
                      callback:(CPlayerCallback) callbacks;
 
+-(instancetype)initWithParams:(CBackendConfig* _Nullable) backend
+                         view:(UIView*) view
+                       config:(CPlayerConfig*) config
+                     callback:(CPlayerCallback) callbacks;
+
 -(instancetype)initWithParams:(UIView*) view
+                       config:(CPlayerConfig*) config
+            protocol_callback:(id<ICloudCPlayerCallback>) callbacks;
+
+-(instancetype)initWithParams:(CBackendConfig* _Nullable) backend
+                         view:(UIView*) view
                        config:(CPlayerConfig*) config
             protocol_callback:(id<ICloudCPlayerCallback>) callbacks;
 
@@ -432,8 +450,17 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
           onMicFrameAvailable:(CPlayerAudioMicrophoneFrameAvailableCallback) frameAvailableCallback
     onPlaybackPositionChanged:(CPlayerPlaybackPositionChangedCallback) positionChangedCallback;
 
+-(instancetype)initWithParams:(CBackendConfig* _Nullable) backend
+                         view:(UIView*) view
+                       config:(CPlayerConfig*) config
+                     callback:(CPlayerCallback) callbacks
+          onMicFrameAvailable:(CPlayerAudioMicrophoneFrameAvailableCallback) frameAvailableCallback
+    onPlaybackPositionChanged:(CPlayerPlaybackPositionChangedCallback) positionChangedCallback;
+
 -(void) setDelegate:(id<CloudPlayerSDKDelegate>) delegate;
 -(id<CloudPlayerSDKDelegate>) getDelegate;
+
+-(CBackendConfig* _Nonnull) getBackendConfig;
 
 -(int) setSource:(NSString* _Nullable) source;
 -(int) setSource:(NSString* _Nullable) source
@@ -442,6 +469,19 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
     withPosition:(long long) position
      withLiveUrl:(NSString* _Nullable (^ _Nullable)(CPlayerLiveUrlType type)) liveProvider // if not nil, return url according requested live url type
  withBackwardUrl:(NSString* _Nullable (^ _Nullable)(void)) backwardProvider; // if not nil, return audio backward url
+
+-(int) setSource:(NSString* _Nullable) source
+      withParams:(CSourceParams* _Nullable) params;
+-(int) setSource:(NSString* _Nullable) source
+      withParams:(CSourceParams* _Nullable) params
+    withPosition:(long long) position;
+-(int) setSource:(NSString* _Nullable) source
+      withParams:(CSourceParams* _Nullable) params
+    withPosition:(long long) position
+     withLiveUrl:(NSString* _Nullable (^ _Nullable)(CPlayerLiveUrlType type)) liveProvider // if not nil, return url according requested live url type
+ withBackwardUrl:(NSString* _Nullable (^ _Nullable)(void)) backwardProvider; // if not nil, return audio backward url
+
+-(int) updateSource:(CSourceParams* _Nonnull) params;
 
 -(int) setConfig:(CPlayerConfig* _Nonnull) config;
 -(CPlayerConfig* _Nullable) getConfig;
