@@ -1,5 +1,20 @@
 # VXG Mobile SDK iOS
 
+### MobileSDK 2.0.135.250130
+
+CloudSDK
+Version 2.0.135_20250130:
+- updated versions of used SDK:
+  PlayerSDK: 2.0.20250130
+- added Sleep Service API support to BE API
+
+PlayerSDK
+Version 2.0.20250130:
+- added possible fix for rare metal renderer crash
+
+EncoderSDK
+Version 2.0.20240927:
+
 ### MobileSDK 2.0.134.250108
 
 CloudSDK

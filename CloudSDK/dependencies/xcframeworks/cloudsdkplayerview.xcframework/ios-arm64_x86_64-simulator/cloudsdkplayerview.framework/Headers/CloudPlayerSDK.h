@@ -901,6 +901,14 @@ typedef void (^CPlayerPlaybackPositionChangedCallback)(id<ICloudCObject> _Nonnul
 -(int) cancelSynchronizeMemoryCard:(NSString*) rid
                         onComplete:(void (^ _Nonnull)(NSObject* _Nullable obj, int status)) complete;
 
+// BE API: Sleep service
+-(int) getSleepServiceServerSettings:(void (^)(NSObject* obj, int status)) complete;
+-(int) updateSleepServiceSettings:(NSDictionary*) settings
+                       onComplete:(void (^)(NSObject* obj, int status)) complete;
+-(int) getSleepServiceState:(void (^)(NSObject* obj, int status)) complete;
+-(int) requestSleepServiceState:(void (^)(NSObject* obj, int status)) complete;
+-(int) sendSleepServiceWeakeup:(void (^)(NSObject* obj, int status)) complete;
+
 -(void) setLngLtdBounds:(double) latitude
                        :(double) longitude;
 -(double) getLat;
